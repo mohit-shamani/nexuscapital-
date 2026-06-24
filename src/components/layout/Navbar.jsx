@@ -35,6 +35,12 @@ export default function Navbar() {
     navigate(path);
   };
 
+  // Interior pages open on a dark hero (PageHero / bg-ink); Home's hero is light.
+  // At the very top — before the light panel appears — the navbar must use light
+  // contents there, or dark-on-dark renders it invisible.
+  const onDarkHero = location.pathname !== '/';
+  const atTopDark = !scrolled && onDarkHero;
+
   return (
     <>
       <header
@@ -47,7 +53,7 @@ export default function Navbar() {
       >
         <Container className="flex items-center justify-between">
           <button onClick={() => go('/')} aria-label="Nexus Capital — home">
-            <Logo />
+            <Logo light={atTopDark} />
           </button>
 
           <nav className="hidden items-center gap-9 lg:flex">
@@ -57,8 +63,11 @@ export default function Navbar() {
                 onClick={() => go(link.path)}
                 aria-current={location.pathname === link.path ? 'page' : undefined}
                 className={cn(
-                  'link-underline text-sm font-medium tracking-wide transition-colors duration-300 hover:text-ink',
-                  location.pathname === link.path ? 'text-ink' : 'text-ink/70'
+                  'link-underline text-sm font-medium tracking-wide transition-colors duration-300',
+                  atTopDark ? 'hover:text-ivory' : 'hover:text-ink',
+                  location.pathname === link.path
+                    ? atTopDark ? 'text-ivory' : 'text-ink'
+                    : atTopDark ? 'text-ivory/70' : 'text-ink/70'
                 )}
               >
                 {link.label}
@@ -67,7 +76,12 @@ export default function Navbar() {
             <Magnetic>
               <button
                 onClick={() => go('/contact')}
-                className="rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-ivory transition-colors duration-300 hover:bg-ink-600"
+                className={cn(
+                  'rounded-full px-6 py-2.5 text-sm font-medium transition-colors duration-300',
+                  atTopDark
+                    ? 'bg-ivory text-ink hover:bg-ivory/90'
+                    : 'bg-ink text-ivory hover:bg-ink-600'
+                )}
               >
                 Book A Consultation
               </button>
@@ -83,13 +97,15 @@ export default function Navbar() {
           >
             <span
               className={cn(
-                'h-px w-6 bg-ink transition-all duration-300 ease-expo',
+                'h-px w-6 transition-all duration-300 ease-expo',
+                atTopDark && !menuOpen ? 'bg-ivory' : 'bg-ink',
                 menuOpen && 'translate-y-[3.5px] rotate-45'
               )}
             />
             <span
               className={cn(
-                'h-px w-6 bg-ink transition-all duration-300 ease-expo',
+                'h-px w-6 transition-all duration-300 ease-expo',
+                atTopDark && !menuOpen ? 'bg-ivory' : 'bg-ink',
                 menuOpen && '-translate-y-[3.5px] -rotate-45'
               )}
             />

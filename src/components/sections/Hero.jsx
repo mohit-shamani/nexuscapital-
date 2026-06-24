@@ -4,7 +4,6 @@ import Container from '../ui/Container.jsx';
 import Button from '../ui/Button.jsx';
 import Magnetic from '../ui/Magnetic.jsx';
 import { fadeUp, EASE_EXPO } from '../../lib/motion.js';
-import { scrollToId } from '../../lib/scroll.js';
 
 // The WebGL layer is heavy — load it lazily so first paint isn't blocked.
 const HeroScene = lazy(() => import('../three/HeroScene.jsx'));
@@ -71,12 +70,12 @@ export default function Hero() {
             className="mt-12 flex flex-wrap items-center gap-5"
           >
             <Magnetic>
-              <Button variant="primary" onClick={() => scrollToId('contact')}>
+              <Button variant="primary" to="/contact">
                 Schedule Consultation
                 <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Button>
             </Magnetic>
-            <Button variant="outline" onClick={() => scrollToId('services')}>
+            <Button variant="outline" to="/strategies">
               Explore Strategies
             </Button>
           </motion.div>

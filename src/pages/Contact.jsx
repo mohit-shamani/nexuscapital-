@@ -8,10 +8,7 @@ import { fadeUp } from '../lib/motion.js';
 import { cn } from '../lib/utils.js';
 
 const offices = [
-  { city: 'London', detail: '1 Finsbury Avenue, London EC2M 2PF', tag: 'Headquarters' },
-  { city: 'New York', detail: '200 Park Avenue, New York, NY 10166', tag: 'Americas' },
-  { city: 'Singapore', detail: 'Marina Bay Financial Centre, 018983', tag: 'Asia-Pacific' },
-  { city: 'Abu Dhabi', detail: 'Al Maryah Island, Abu Dhabi Global Market', tag: 'Middle East' },
+  { city: 'Bangkok', detail: 'Sukhumvit Road, Bangkok, TH', tag: 'Headquarters' },
 ];
 
 const inputBase =
@@ -114,8 +111,11 @@ export default function Contact() {
 
             <div className="mt-12 border-t border-ink/10 pt-8">
               <p className="eyebrow mb-3 text-ink/50">General enquiries</p>
-              <a href="mailto:institutional@nexuscapital.com" className="link-underline text-ink">
-                institutional@nexuscapital.com
+              <a href="mailto:info@nexuscapital.in" className="link-underline block text-ink">
+                info@nexuscapital.in
+              </a>
+              <a href="tel:+66930242929" className="link-underline mt-2 block text-ink">
+                +66 930242929
               </a>
             </div>
           </div>

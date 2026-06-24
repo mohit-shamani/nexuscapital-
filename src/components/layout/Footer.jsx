@@ -48,9 +48,9 @@ export default function Footer() {
         <div className="mt-20 flex flex-col gap-6 border-t border-ivory/10 pt-8 text-xs text-ivory/40 md:flex-row md:items-center md:justify-between">
           <p>© {year} Nexus Capital Partners LLP. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
-            <a href="#" className="hover:text-ivory/70">Legal &amp; Regulatory</a>
-            <a href="#" className="hover:text-ivory/70">Privacy</a>
-            <a href="#" className="hover:text-ivory/70">Modern Slavery Statement</a>
+            <Link to="/legal" className="hover:text-ivory/70">Legal &amp; Regulatory</Link>
+            <Link to="/privacy" className="hover:text-ivory/70">Privacy</Link>
+            <Link to="/modern-slavery" className="hover:text-ivory/70">Modern Slavery Statement</Link>
           </div>
         </div>
 
@@ -59,6 +59,10 @@ export default function Footer() {
           constitute an offer or solicitation. Capital at risk. The value of investments
           and the income from them may fall as well as rise. Past performance is not a
           reliable indicator of future results.
+        </p>
+
+        <p className="mt-12 text-center text-xs text-ivory/40">
+          All Rights Reserved.Made with💖© 2026 nexuscapital.in
         </p>
       </Container>
     </footer>

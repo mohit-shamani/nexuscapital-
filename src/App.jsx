@@ -13,6 +13,7 @@ const Strategies = lazy(() => import('./pages/Strategies.jsx'));
 const Insights = lazy(() => import('./pages/Insights.jsx'));
 const Expertise = lazy(() => import('./pages/Expertise.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
+const Legal = lazy(() => import('./pages/Legal.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 
 export default function App() {
@@ -31,6 +32,9 @@ export default function App() {
               <Route path="/insights" element={<Insights />} />
               <Route path="/expertise" element={<Expertise />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/legal" element={<Legal slug="legal" />} />
+              <Route path="/privacy" element={<Legal slug="privacy" />} />
+              <Route path="/modern-slavery" element={<Legal slug="modern-slavery" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>

@@ -5,7 +5,6 @@ export const navLinks = [
   { label: 'Strategies', path: '/strategies' },
   { label: 'Insights', path: '/insights' },
   { label: 'Our Expertise', path: '/expertise' },
-  { label: 'Contact', path: '/contact' },
 ];
 
 export const footerNav = [
