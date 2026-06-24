@@ -4,6 +4,7 @@ import PageWrapper from '../components/layout/PageWrapper.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import Button from '../components/ui/Button.jsx';
+import InsightsPreview from '../components/sections/InsightsPreview.jsx';
 import { fadeUp } from '../lib/motion.js';
 import { cn } from '../lib/utils.js';
 
@@ -121,6 +122,11 @@ export default function Contact() {
           </div>
         </Container>
       </section>
+
+      {/* Recent insights */}
+      <div className="border-t border-ink/10">
+        <InsightsPreview />
+      </div>
     </PageWrapper>
   );
 }

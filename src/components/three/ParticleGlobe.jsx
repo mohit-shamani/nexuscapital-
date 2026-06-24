@@ -44,7 +44,7 @@ export default function ParticleGlobe({ pointer }) {
     const blue = [];
     const gold = [];
     points.forEach((p, i) => {
-      const target = i % 4 === 0 ? gold : blue;
+      const target = i % 7 === 0 ? gold : blue;
       target.push(p.x, p.y, p.z);
     });
     return {
@@ -72,7 +72,7 @@ export default function ParticleGlobe({ pointer }) {
         const key = i < j ? `${i}-${j}` : `${j}-${i}`;
         if (seen.has(key)) continue;
         seen.add(key);
-        const target = edge % 7 === 0 ? gold : blue; // ~14% gold accents
+        const target = edge % 13 === 0 ? gold : blue; // ~8% gold accents
         edge += 1;
         target.push(
           points[i].x, points[i].y, points[i].z,
@@ -90,7 +90,7 @@ export default function ParticleGlobe({ pointer }) {
     const gold = [];
     const SEG = 26;
     const pairs = [
-      [10, 188], [44, 300], [96, 250], [150, 22], [210, 332], [70, 160],
+      [10, 188], [96, 250], [210, 332],
     ];
     pairs.forEach(([ai, bi], idx) => {
       const a = points[ai % points.length];
@@ -143,7 +143,7 @@ export default function ParticleGlobe({ pointer }) {
             float t = clamp(vY / uRadius * 0.5 + 0.5, 0.0, 1.0);
             vec3 col = mix(cDeep, cBlue, smoothstep(0.05, 0.95, t));
             float fres = pow(1.0 - abs(vN.z), 1.5);
-            col = mix(col, cBlue, fres * 0.35);
+            col = mix(col, cBlue, fres * 0.22);
             gl_FragColor = vec4(col, uOpacity);
           }
         `,
@@ -160,7 +160,7 @@ export default function ParticleGlobe({ pointer }) {
         depthWrite: false,
         uniforms: {
           cGlow: { value: new THREE.Color(C_ATMO) },
-          uStrength: { value: 0.6 },
+          uStrength: { value: 0.38 },
         },
         vertexShader: /* glsl */ `
           varying vec3 vN;
@@ -199,8 +199,8 @@ export default function ParticleGlobe({ pointer }) {
 
     // Subtle node pulse — blue and gold breathe out of phase, like activity.
     const t = state.clock.elapsedTime;
-    if (blueNodeMat.current) blueNodeMat.current.opacity = 0.6 + Math.sin(t * 1.4) * 0.22;
-    if (goldNodeMat.current) goldNodeMat.current.opacity = 0.7 + Math.sin(t * 1.4 + 2.0) * 0.25;
+    if (blueNodeMat.current) blueNodeMat.current.opacity = 0.42 + Math.sin(t * 1.1) * 0.12;
+    if (goldNodeMat.current) goldNodeMat.current.opacity = 0.55 + Math.sin(t * 1.1 + 2.0) * 0.14;
   });
 
   return (
@@ -222,7 +222,7 @@ export default function ParticleGlobe({ pointer }) {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[blueLines, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color={C_BLUE} transparent opacity={0.32} depthWrite={false} />
+        <lineBasicMaterial color={C_BLUE} transparent opacity={0.18} depthWrite={false} />
       </lineSegments>
 
       {/* Gold accent lines */}
@@ -230,7 +230,7 @@ export default function ParticleGlobe({ pointer }) {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[goldLines, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color={C_GOLD} transparent opacity={0.5} depthWrite={false} />
+        <lineBasicMaterial color={C_GOLD} transparent opacity={0.28} depthWrite={false} />
       </lineSegments>
 
       {/* Faint connection arcs */}
@@ -238,13 +238,13 @@ export default function ParticleGlobe({ pointer }) {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[blueArcs, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color={C_BLUE} transparent opacity={0.28} depthWrite={false} />
+        <lineBasicMaterial color={C_BLUE} transparent opacity={0.14} depthWrite={false} />
       </lineSegments>
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[goldArcs, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color={C_GOLD} transparent opacity={0.34} depthWrite={false} />
+        <lineBasicMaterial color={C_GOLD} transparent opacity={0.18} depthWrite={false} />
       </lineSegments>
 
       {/* Blue nodes */}
@@ -255,10 +255,10 @@ export default function ParticleGlobe({ pointer }) {
         <pointsMaterial
           ref={blueNodeMat}
           color={C_BLUE}
-          size={0.045}
+          size={0.034}
           sizeAttenuation
           transparent
-          opacity={0.75}
+          opacity={0.5}
           depthWrite={false}
         />
       </points>
@@ -271,10 +271,10 @@ export default function ParticleGlobe({ pointer }) {
         <pointsMaterial
           ref={goldNodeMat}
           color={C_GOLD}
-          size={0.06}
+          size={0.046}
           sizeAttenuation
           transparent
-          opacity={0.9}
+          opacity={0.7}
           depthWrite={false}
         />
       </points>
