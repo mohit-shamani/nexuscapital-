@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '../../lib/utils.js';
 
 const base =
-  'group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-colors duration-500 ease-expo focus:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2';
+  'group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-colors duration-500 ease-expo focus:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60';
 
 const variants = {
   primary: 'bg-ink text-ivory hover:text-ink',

@@ -4,6 +4,7 @@ import PageWrapper from '../components/layout/PageWrapper.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
+import InsightVisual from '../components/ui/InsightVisual.jsx';
 import { insights } from '../data/insights.js';
 import { fadeUp } from '../lib/motion.js';
 import { cn } from '../lib/utils.js';
@@ -61,7 +62,9 @@ export default function Insights() {
               className="group mb-16 grid grid-cols-1 gap-8 border-b border-ink/10 pb-16 lg:grid-cols-12"
             >
               <div className="lg:col-span-7">
-                <div className="aspect-[16/10] w-full bg-gradient-to-br from-ink-600 via-ink to-ink-900" />
+                <div className="aspect-[16/10] w-full overflow-hidden">
+                  <InsightVisual category={featured.category} />
+                </div>
               </div>
               <div className="flex flex-col justify-center lg:col-span-5">
                 <div className="mb-5 flex items-center gap-4 text-xs">
@@ -95,8 +98,11 @@ export default function Insights() {
                 transition={{ delay: i * 0.08 }}
                 className="group flex flex-col"
               >
-                <div className="mb-6 aspect-[3/2] w-full overflow-hidden bg-gradient-to-br from-ink-600 to-ink-900">
-                  <div className="h-full w-full transition-transform duration-700 ease-expo group-hover:scale-105" />
+                <div className="mb-6 aspect-[3/2] w-full overflow-hidden">
+                  <InsightVisual
+                    category={post.category}
+                    className="transition-transform duration-700 ease-expo group-hover:scale-105"
+                  />
                 </div>
                 <div className="mb-3 flex items-center gap-3 text-xs">
                   <span className="font-medium uppercase tracking-micro text-brass">

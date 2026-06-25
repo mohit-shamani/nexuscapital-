@@ -6,7 +6,9 @@
       "Bash(git config *)",
       "Bash(git add *)",
       "Bash(git commit -q -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(curl -s -o /dev/null -w \"Home page HTTP status: %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(php -l dist/contact.php)"
     ]
   }
 }

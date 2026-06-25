@@ -17,10 +17,33 @@ const inputBase =
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setError('');
+    setSubmitting(true);
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('/contact.php', {
+        method: 'POST',
+        body: data,
+      });
+      const result = await res.json();
+      if (result.success) {
+        setSent(true);
+      } else {
+        setError(result.message || 'Something went wrong. Please email us directly.');
+      }
+    } catch {
+      setError('Unable to send right now. Please email info@nexuscapital.in directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -49,35 +72,48 @@ export default function Contact() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                {/* Honeypot — hidden from people, catches bots */}
+                <input
+                  type="text"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
                 <div>
                   <label className="eyebrow mb-3 block text-ink/50">First name</label>
-                  <input required className={inputBase} placeholder="Jane" />
+                  <input required name="first_name" className={inputBase} placeholder="Jane" />
                 </div>
                 <div>
                   <label className="eyebrow mb-3 block text-ink/50">Last name</label>
-                  <input required className={inputBase} placeholder="Whitfield" />
+                  <input required name="last_name" className={inputBase} placeholder="Whitfield" />
                 </div>
                 <div>
                   <label className="eyebrow mb-3 block text-ink/50">Institution</label>
-                  <input required className={inputBase} placeholder="Endowment, pension, sovereign fund…" />
+                  <input required name="institution" className={inputBase} placeholder="Endowment, pension, sovereign fund…" />
                 </div>
                 <div>
                   <label className="eyebrow mb-3 block text-ink/50">Work email</label>
-                  <input required type="email" className={inputBase} placeholder="jane@institution.org" />
+                  <input required type="email" name="email" className={inputBase} placeholder="jane@institution.org" />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="eyebrow mb-3 block text-ink/50">How can we help?</label>
                   <textarea
+                    name="message"
                     rows={4}
                     className={cn(inputBase, 'resize-none')}
                     placeholder="A few words on your mandate and objectives…"
                   />
                 </div>
                 <div className="sm:col-span-2 pt-4">
-                  <Button variant="primary" type="submit">
-                    Submit enquiry
+                  <Button variant="primary" type="submit" disabled={submitting}>
+                    {submitting ? 'Sending…' : 'Submit enquiry'}
                     <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Button>
+                  {error && (
+                    <p className="mt-5 text-sm leading-relaxed text-red-700">{error}</p>
+                  )}
                   <p className="mt-5 text-xs leading-relaxed text-slatey">
                     For institutional and professional investors only. Your information is
                     handled in confidence and never shared.
