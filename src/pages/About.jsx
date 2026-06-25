@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
@@ -30,6 +31,11 @@ const values = [
 export default function About() {
   return (
     <PageWrapper>
+      <Seo
+        title="About Us — Disciplined Digital Wealth Management"
+        path="/firm"
+        description="NexusCapital is an independent, partner-owned asset manager bringing decades of institutional discipline, bank-grade security and full transparency to digital asset management."
+      />
       <PageHero
         eyebrow="The Firm"
         title="Thirty-eight years of disciplined stewardship."

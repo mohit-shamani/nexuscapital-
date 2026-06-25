@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
@@ -9,6 +10,11 @@ import { fadeUp } from '../lib/motion.js';
 export default function Strategies() {
   return (
     <PageWrapper>
+      <Seo
+        title="Strategies — Crypto Portfolio Management & Risk"
+        path="/strategies"
+        description="Actively managed crypto portfolios, wealth preservation, alternative investments and risk-first management — institutional digital asset strategies built around your mandate."
+      />
       <PageHero
         eyebrow="Strategies"
         title="Four disciplines, one philosophy."

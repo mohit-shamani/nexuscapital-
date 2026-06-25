@@ -155,11 +155,62 @@ function StewardshipOrbits() {
   );
 }
 
+// Volatile path held above a protective floor — Risk Management
+function RiskFloor() {
+  return (
+    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+      {/* downside band beneath the floor */}
+      <rect x="0" y="180" width="400" height="80" fill={LINE} fillOpacity="0.06" />
+      {/* protective floor line */}
+      <line x1="0" y1="180" x2="400" y2="180" stroke={LINE} strokeOpacity="0.55" strokeWidth="1.5" strokeDasharray="5 6" />
+      {/* volatile equity path that respects the floor */}
+      <path
+        d="M0,150 L45,168 L80,120 L120,164 L160,110 L205,172 L250,128 L300,170 L345,124 L400,150"
+        fill="none"
+        stroke={LINE}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* guard markers where the path nears the floor */}
+      <circle cx="205" cy="172" r="3.5" fill={ACCENT} />
+      <circle cx="120" cy="164" r="3" fill={ACCENT} fillOpacity="0.8" />
+      <circle cx="300" cy="170" r="3" fill={ACCENT} fillOpacity="0.8" />
+    </svg>
+  );
+}
+
+// Balanced scales over a baseline — Regulation & Policy
+function PolicyScales() {
+  const cx = 200;
+  return (
+    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+      {/* central column */}
+      <line x1={cx} y1="70" x2={cx} y2="196" stroke={STRUCTURE} strokeOpacity="0.4" strokeWidth="1.5" />
+      {/* beam */}
+      <line x1="110" y1="92" x2="290" y2="92" stroke={LINE} strokeOpacity="0.7" strokeWidth="1.75" />
+      <circle cx={cx} cy="70" r="5" fill={ACCENT} />
+      {/* left pan */}
+      <line x1="110" y1="92" x2="110" y2="120" stroke={STRUCTURE} strokeOpacity="0.4" strokeWidth="1" />
+      <path d="M86,120 A24,14 0 0 0 134,120" fill="none" stroke={LINE} strokeOpacity="0.7" strokeWidth="1.5" />
+      {/* right pan */}
+      <line x1="290" y1="92" x2="290" y2="120" stroke={STRUCTURE} strokeOpacity="0.4" strokeWidth="1" />
+      <path d="M266,120 A24,14 0 0 0 314,120" fill="none" stroke={LINE} strokeOpacity="0.7" strokeWidth="1.5" />
+      {/* base */}
+      <line x1="150" y1="196" x2="250" y2="196" stroke={STRUCTURE} strokeOpacity="0.4" strokeWidth="1.5" />
+      <circle cx="110" cy="120" r="3" fill={ACCENT} fillOpacity="0.85" />
+      <circle cx="290" cy="120" r="3" fill={ACCENT} fillOpacity="0.85" />
+    </svg>
+  );
+}
+
 const MOTIFS = {
   'Market Outlook': MarketChart,
   'Custody & Security': VaultRings,
   'On-Chain Yield': YieldNetwork,
   Stewardship: StewardshipOrbits,
+  'Risk Management': RiskFloor,
+  'Regulation & Policy': PolicyScales,
 };
 
 export default function InsightVisual({ category, className }) {

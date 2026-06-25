@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
@@ -9,6 +10,11 @@ import { fadeUp } from '../lib/motion.js';
 export default function Expertise() {
   return (
     <PageWrapper>
+      <Seo
+        title="Our Expertise — Digital Asset Custody & Research"
+        path="/expertise"
+        description="From portfolio construction to bank-grade custody, NexusCapital applies institutional rigor to every stage of the digital-asset lifecycle — research, trading, security and governance."
+      />
       <PageHero
         eyebrow="Our Expertise"
         title="Institutional rigor, applied to digital assets."

@@ -24,6 +24,12 @@ export default function Footer() {
               An institutional asset manager entrusted with the long-term capital of the
               world's most discerning institutions.
             </p>
+            <a
+              href="mailto:info@nexuscapital.in"
+              className="link-underline mt-6 inline-block text-sm text-ivory/70 transition-colors hover:text-ivory"
+            >
+              info@nexuscapital.in
+            </a>
           </div>
 
           {footerNav.map((group) => (
@@ -54,15 +60,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 max-w-3xl text-[11px] leading-relaxed text-ivory/30">
+        <p className="mt-10 max-w-3xl text-[11px] leading-relaxed text-ivory/40">
+          <span className="font-medium text-ivory/60">Risk disclaimer:</span> Crypto
+          investments involve a high risk of loss. Past performance is not indicative of
+          future results. NexusCapital does not provide guaranteed returns. Please invest
+          responsibly.
+        </p>
+
+        <p className="mt-5 max-w-3xl text-[11px] leading-relaxed text-ivory/30">
           This website is for institutional and professional investors only and does not
           constitute an offer or solicitation. Capital at risk. The value of investments
-          and the income from them may fall as well as rise. Past performance is not a
-          reliable indicator of future results.
+          and the income from them may fall as well as rise.
         </p>
 
         <p className="mt-12 text-center text-xs text-ivory/40">
-          All Rights Reserved.Made with💖© 2026 nexuscapital.in
+          All rights reserved. Made with 💖 · © 2026 nexuscapital.in
         </p>
       </Container>
     </footer>

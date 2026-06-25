@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
@@ -13,6 +14,7 @@ export default function Legal({ slug }) {
 
   return (
     <PageWrapper>
+      <Seo title={page.title} path={`/${slug}`} description={page.intro} />
       <PageHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
 
       <section className="bg-ivory py-24 md:py-32">

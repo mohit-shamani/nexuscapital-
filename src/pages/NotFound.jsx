@@ -1,10 +1,12 @@
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import Container from '../components/ui/Container.jsx';
 import Button from '../components/ui/Button.jsx';
 
 export default function NotFound() {
   return (
     <PageWrapper>
+      <Seo title="Page Not Found" noindex description="The page you are looking for has moved or no longer exists." />
       <section className="flex min-h-screen items-center bg-ink text-ivory">
         <Container className="text-center">
           <p className="eyebrow mb-6 text-brass-light">Error 404</p>

@@ -41,22 +41,22 @@ export default function InsightsPreview() {
               transition={{ delay: i * 0.1 }}
               className="group flex flex-col bg-ivory p-8 transition-colors duration-500 hover:bg-ivory-50 md:p-10"
             >
-              <div className="mb-6 flex items-center justify-between text-xs">
-                <span className="font-medium uppercase tracking-micro text-brass">
-                  {post.category}
-                </span>
-                <span className="text-slatey">{post.readingTime}</span>
-              </div>
-              <h3 className="font-serif text-2xl font-light leading-snug text-ink transition-colors group-hover:text-brass">
-                {post.title}
-              </h3>
-              <p className="mt-4 flex-1 leading-relaxed text-slatey">{post.excerpt}</p>
-              <div className="mt-8 flex items-center justify-between border-t border-ink/10 pt-5 text-sm text-slatey">
-                <span>{formatDate(post.date)}</span>
-                <Link to="/insights" className="link-underline text-ink">
-                  Read →
-                </Link>
-              </div>
+              <Link to={`/insights/${post.id}`} className="flex flex-1 flex-col">
+                <div className="mb-6 flex items-center justify-between text-xs">
+                  <span className="font-medium uppercase tracking-micro text-brass">
+                    {post.category}
+                  </span>
+                  <span className="text-slatey">{post.readingTime}</span>
+                </div>
+                <h3 className="font-serif text-2xl font-light leading-snug text-ink transition-colors group-hover:text-brass">
+                  {post.title}
+                </h3>
+                <p className="mt-4 flex-1 leading-relaxed text-slatey">{post.excerpt}</p>
+                <div className="mt-8 flex items-center justify-between border-t border-ink/10 pt-5 text-sm text-slatey">
+                  <span>{formatDate(post.date)}</span>
+                  <span className="link-underline text-ink">Read →</span>
+                </div>
+              </Link>
             </motion.article>
           ))}
         </div>

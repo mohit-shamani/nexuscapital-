@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import Button from '../components/ui/Button.jsx';
 import InsightsPreview from '../components/sections/InsightsPreview.jsx';
 import { fadeUp } from '../lib/motion.js';
 import { cn } from '../lib/utils.js';
-
-const offices = [
-  { city: 'Bangkok', detail: 'Sukhumvit Road, Bangkok, TH', tag: 'Headquarters' },
-];
 
 const inputBase =
   'w-full border-b border-ink/20 bg-transparent py-3 text-ink placeholder:text-slatey/60 transition-colors duration-300 focus:border-brass focus:outline-none';
@@ -48,6 +45,11 @@ export default function Contact() {
 
   return (
     <PageWrapper>
+      <Seo
+        title="Contact — Book a Portfolio Review"
+        path="/contact"
+        description="Begin a confidential conversation with NexusCapital. Contact our institutional team to discuss your mandate and book a portfolio review. Email info@nexuscapital.in."
+      />
       <PageHero
         eyebrow="Contact"
         title="Begin a confidential conversation."
@@ -123,37 +125,32 @@ export default function Contact() {
             )}
           </div>
 
-          {/* Offices */}
+          {/* Contact details */}
           <div className="lg:col-span-5 lg:border-l lg:border-ink/10 lg:pl-16">
-            <p className="eyebrow mb-8">Our offices</p>
-            <div className="space-y-8">
-              {offices.map((office, i) => (
-                <motion.div
-                  key={office.city}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="border-t border-ink/10 pt-5"
-                >
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="font-serif text-2xl font-light text-ink">{office.city}</h3>
-                    <span className="text-xs uppercase tracking-micro text-brass">{office.tag}</span>
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-slatey">{office.detail}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-12 border-t border-ink/10 pt-8">
-              <p className="eyebrow mb-3 text-ink/50">General enquiries</p>
-              <a href="mailto:info@nexuscapital.in" className="link-underline block text-ink">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <p className="eyebrow mb-8">General enquiries</p>
+              <a
+                href="mailto:info@nexuscapital.in"
+                className="link-underline block font-serif text-2xl font-light text-ink"
+              >
                 info@nexuscapital.in
               </a>
-              <a href="tel:+66930242929" className="link-underline mt-2 block text-ink">
-                +66 930242929
-              </a>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-slatey">
+                Every enquiry is reviewed personally by our institutional team. We aim to
+                respond within two business days.
+              </p>
+            </motion.div>
+
+            <div className="mt-12 border-t border-ink/10 pt-8">
+              <p className="eyebrow mb-3 text-ink/50">Hours</p>
+              <p className="text-sm leading-relaxed text-slatey">
+                Monday – Friday, 9:00 – 18:00 IST
+              </p>
             </div>
           </div>
         </Container>

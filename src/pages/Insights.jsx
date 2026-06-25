@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
@@ -26,6 +28,11 @@ export default function Insights() {
 
   return (
     <PageWrapper>
+      <Seo
+        title="Insights & Research — Digital Asset Market Analysis"
+        path="/insights"
+        description="Institutional research and market outlook on crypto asset allocation, custody, on-chain yield, risk management and regulation from the NexusCapital investment team."
+      />
       <PageHero
         eyebrow="Insights"
         title="Perspectives for the long horizon."
@@ -54,36 +61,47 @@ export default function Insights() {
 
           {/* Featured */}
           {featured && (
-            <motion.article
+            <motion.div
               key={featured.id}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="group mb-16 grid grid-cols-1 gap-8 border-b border-ink/10 pb-16 lg:grid-cols-12"
+              className="mb-16 border-b border-ink/10 pb-16"
             >
-              <div className="lg:col-span-7">
-                <div className="aspect-[16/10] w-full overflow-hidden">
-                  <InsightVisual category={featured.category} />
+              <Link
+                to={`/insights/${featured.id}`}
+                className="group grid grid-cols-1 gap-8 lg:grid-cols-12"
+              >
+                <div className="lg:col-span-7">
+                  <div className="aspect-[16/10] w-full overflow-hidden">
+                    <InsightVisual
+                      category={featured.category}
+                      className="transition-transform duration-700 ease-expo group-hover:scale-105"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col justify-center lg:col-span-5">
-                <div className="mb-5 flex items-center gap-4 text-xs">
-                  <span className="font-medium uppercase tracking-micro text-brass">
-                    {featured.category}
+                <div className="flex flex-col justify-center lg:col-span-5">
+                  <div className="mb-5 flex items-center gap-4 text-xs">
+                    <span className="font-medium uppercase tracking-micro text-brass">
+                      {featured.category}
+                    </span>
+                    <span className="text-slatey">{featured.readingTime}</span>
+                  </div>
+                  <h2 className="font-serif text-3xl font-light leading-snug text-ink transition-colors group-hover:text-brass md:text-4xl">
+                    {featured.title}
+                  </h2>
+                  <p className="mt-5 text-lg leading-relaxed text-slatey">{featured.excerpt}</p>
+                  <div className="mt-8 flex items-center gap-4 text-sm text-slatey">
+                    <span>{featured.author}</span>
+                    <span className="h-1 w-1 rounded-full bg-slatey/50" />
+                    <span>{formatDate(featured.date)}</span>
+                  </div>
+                  <span className="link-underline mt-6 inline-block text-sm font-medium text-ink">
+                    Read article →
                   </span>
-                  <span className="text-slatey">{featured.readingTime}</span>
                 </div>
-                <h2 className="font-serif text-3xl font-light leading-snug text-ink md:text-4xl">
-                  {featured.title}
-                </h2>
-                <p className="mt-5 text-lg leading-relaxed text-slatey">{featured.excerpt}</p>
-                <div className="mt-8 flex items-center gap-4 text-sm text-slatey">
-                  <span>{featured.author}</span>
-                  <span className="h-1 w-1 rounded-full bg-slatey/50" />
-                  <span>{formatDate(featured.date)}</span>
-                </div>
-              </div>
-            </motion.article>
+              </Link>
+            </motion.div>
           )}
 
           {/* Grid */}
@@ -98,23 +116,25 @@ export default function Insights() {
                 transition={{ delay: i * 0.08 }}
                 className="group flex flex-col"
               >
-                <div className="mb-6 aspect-[3/2] w-full overflow-hidden">
-                  <InsightVisual
-                    category={post.category}
-                    className="transition-transform duration-700 ease-expo group-hover:scale-105"
-                  />
-                </div>
-                <div className="mb-3 flex items-center gap-3 text-xs">
-                  <span className="font-medium uppercase tracking-micro text-brass">
-                    {post.category}
-                  </span>
-                  <span className="text-slatey">{post.readingTime}</span>
-                </div>
-                <h3 className="font-serif text-xl font-light leading-snug text-ink transition-colors group-hover:text-brass">
-                  {post.title}
-                </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-slatey">{post.excerpt}</p>
-                <p className="mt-5 text-sm text-slatey">{formatDate(post.date)}</p>
+                <Link to={`/insights/${post.id}`} className="flex flex-1 flex-col">
+                  <div className="mb-6 aspect-[3/2] w-full overflow-hidden">
+                    <InsightVisual
+                      category={post.category}
+                      className="transition-transform duration-700 ease-expo group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="mb-3 flex items-center gap-3 text-xs">
+                    <span className="font-medium uppercase tracking-micro text-brass">
+                      {post.category}
+                    </span>
+                    <span className="text-slatey">{post.readingTime}</span>
+                  </div>
+                  <h3 className="font-serif text-xl font-light leading-snug text-ink transition-colors group-hover:text-brass">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 flex-1 leading-relaxed text-slatey">{post.excerpt}</p>
+                  <p className="mt-5 text-sm text-slatey">{formatDate(post.date)}</p>
+                </Link>
               </motion.article>
             ))}
           </div>
