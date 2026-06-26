@@ -6,6 +6,7 @@ import Philosophy from '../components/sections/Philosophy.jsx';
 import Stats from '../components/sections/Stats.jsx';
 import StrategiesPreview from '../components/sections/StrategiesPreview.jsx';
 import InsightsPreview from '../components/sections/InsightsPreview.jsx';
+import Faq from '../components/sections/Faq.jsx';
 import CTA from '../components/sections/CTA.jsx';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Stats />
       <StrategiesPreview />
       <InsightsPreview />
+      <Faq />
       <CTA />
     </PageWrapper>
   );
