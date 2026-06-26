@@ -81,15 +81,15 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right — the subtle 3D particle globe */}
+        {/* Right — the subtle 3D particle network */}
         <div className="relative lg:col-span-6">
           <div className="relative mx-auto aspect-square w-full max-w-[34rem]">
-            {/* soft radial halo behind the globe */}
+            {/* soft radial glow behind the network */}
             <div
               className="pointer-events-none absolute inset-0 rounded-full"
               style={{
                 background:
-                  'radial-gradient(circle at 50% 45%, rgba(176,141,87,0.14), transparent 62%)',
+                  'radial-gradient(circle at 50% 48%, rgba(0,114,206,0.10), transparent 64%)',
               }}
             />
             <Suspense fallback={null}>

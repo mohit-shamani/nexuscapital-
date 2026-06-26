@@ -7,7 +7,7 @@ const base =
 const variants = {
   primary: 'bg-ink text-ivory hover:text-ink',
   light: 'bg-ivory text-ink hover:text-ivory',
-  outline: 'border border-ink/20 text-ink hover:border-ink',
+  outline: 'border border-ink/20 text-ink hover:border-ink hover:text-ivory',
   ghost: 'text-ink hover:text-brass px-0',
 };
 

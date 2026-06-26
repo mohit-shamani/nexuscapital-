@@ -1,13 +1,13 @@
 import { Suspense, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Float, AdaptiveDpr, PerformanceMonitor } from '@react-three/drei';
-import ParticleGlobe from './ParticleGlobe.jsx';
+import { AdaptiveDpr, PerformanceMonitor } from '@react-three/drei';
+import ParticleNetwork from './ParticleNetwork.jsx';
 import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion.js';
 
 /**
- * The hero's WebGL layer: a single particle globe, softly lit by the
- * materials themselves. Capped, adaptive pixel ratio keeps it light;
- * disabled entirely for reduced-motion users.
+ * The hero's WebGL layer: a slow-drifting 3D particle network (a digital asset
+ * constellation), softly lit by the materials themselves. Capped, adaptive
+ * pixel ratio keeps it light; disabled entirely for reduced-motion users.
  */
 export default function HeroScene() {
   const pointer = useRef({ x: 0, y: 0 });
@@ -39,9 +39,7 @@ export default function HeroScene() {
         <AdaptiveDpr pixelated={false} />
 
         <Suspense fallback={null}>
-          <Float speed={0.8} rotationIntensity={0.15} floatIntensity={0.35}>
-            <ParticleGlobe pointer={pointer} />
-          </Float>
+          <ParticleNetwork pointer={pointer} />
         </Suspense>
       </Canvas>
     </div>
