@@ -24,9 +24,12 @@ export default function Contact() {
 
     const form = e.target;
     const data = new FormData(form);
+    data.append('access_key', '96c44691-2885-47b6-aa70-79792fa4b8b7');
+    data.append('subject', 'New enquiry from nexuscapital.in');
+    data.append('from_name', 'NexusCapital Website');
 
     try {
-      const res = await fetch('/contact.php', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: data,
       });
@@ -34,7 +37,7 @@ export default function Contact() {
       if (result.success) {
         setSent(true);
       } else {
-        setError(result.message || 'Something went wrong. Please email us directly.');
+        setError('Unable to send right now. Please email info@nexuscapital.in directly.');
       }
     } catch {
       setError('Unable to send right now. Please email info@nexuscapital.in directly.');
@@ -68,8 +71,7 @@ export default function Contact() {
               >
                 <span className="font-serif text-4xl font-light text-ink">Thank you.</span>
                 <p className="mt-5 max-w-md text-lg leading-relaxed text-slatey">
-                  Your enquiry has been received. A member of our institutional team will be
-                  in touch within two business days.
+                  We&rsquo;ll be in touch shortly.
                 </p>
               </motion.div>
             ) : (
