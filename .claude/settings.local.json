@@ -15,7 +15,10 @@
       "Bash(git commit -m ' *)",
       "Bash(ls -1 public/)",
       "Bash(ls -1 vercel.json netlify.toml public/_redirects public/.htaccess public/robots.txt public/sitemap.xml public/favicon.svg)",
-      "Bash(ls -1 *.toml *.json)"
+      "Bash(ls -1 *.toml *.json)",
+      "Bash(ls -la public/)",
+      "Bash(ls vercel.json netlify.toml)",
+      "Bash(find public *)"
     ]
   }
 }

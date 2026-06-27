@@ -5,6 +5,7 @@ import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
+import PostFaq from '../components/sections/PostFaq.jsx';
 import InsightVisual from '../components/ui/InsightVisual.jsx';
 import NotFound from './NotFound.jsx';
 import { insights } from '../data/insights.js';
@@ -73,6 +74,9 @@ export default function InsightPost() {
               )
             )}
           </motion.div>
+
+          {/* Per-article FAQ + FAQPage JSON-LD */}
+          <PostFaq faqs={post.faqs} />
 
           <div className="mt-16 border-t border-ink/10 pt-8">
             <Link to="/insights" className="link-underline text-sm font-medium text-ink">

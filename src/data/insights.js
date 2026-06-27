@@ -20,6 +20,20 @@ export const insights = [
       'A measured allocation is diversified across assets and access vehicles, custodied through institutional infrastructure, and rebalanced on a rule rather than a reaction. It is reported transparently and reviewed on the same cadence as the rest of the portfolio. None of this is novel. It is simply the application of established institutional practice to a newer asset class.',
       'The institutions that will look back on this period favourably are not those who timed an entry, but those who built a durable, repeatable process for owning the asset class through a full cycle.',
     ],
+    faqs: [
+      {
+        q: 'How much should an institution allocate to digital assets?',
+        a: 'There is no universal figure. We size allocations by risk contribution rather than headline capital, and a first allocation is typically a low-single-digit percentage of total assets — enough to be meaningful, small enough to absorb the drawdowns characteristic of the asset class without threatening the broader portfolio.',
+      },
+      {
+        q: 'Is a digital asset allocation a trade or a long-term position?',
+        a: 'We treat it as a strategic allocation, not a tactical trade. Trading invites the portfolio to react to volatility; allocation requires it to withstand volatility. Positions are defined by their role in the portfolio, sized to their risk, and held through a defined horizon.',
+      },
+      {
+        q: 'How do you manage the volatility of the allocation?',
+        a: 'Through risk budgeting. Instead of asking how much capital to commit, we ask how much risk the allocation should contribute and size from there. Because digital assets carry high standalone volatility, even a modest capital weight delivers a meaningful — and controlled — risk contribution.',
+      },
+    ],
   },
   {
     id: 'custody-foundation-of-trust',
@@ -39,6 +53,20 @@ export const insights = [
       { h: 'Visible by default' },
       'Custody should also be transparent to the client. Holdings, addresses and movements are visible to the institutions we serve at all times. Trust is not asked for; it is evidenced. That is the standard we hold ourselves to, because in this asset class custody is not a back-office function — it is the foundation on which everything else rests.',
     ],
+    faqs: [
+      {
+        q: 'Why does custody matter so much for digital assets?',
+        a: 'Digital assets remove the intermediaries that make custody almost invisible in traditional markets. There is no regulated custodian standing between you and loss by default, so how an asset is held moves from the background to the centre of the risk conversation. No return justifies an uncontrolled custody arrangement.',
+      },
+      {
+        q: 'How are client assets protected from a single point of failure?',
+        a: 'Sound custody begins with a simple principle: no single person, device or location should be able to move client assets. Modern key-management — multi-signature or multi-party computation — distributes signing authority so a transaction requires a quorum of independent approvals, supported by segregation of duties, allow-lists and time-locks.',
+      },
+      {
+        q: 'Can clients see their own holdings?',
+        a: 'Yes. Holdings, addresses and movements are visible to the institutions we serve at all times. We regard transparency as part of custody itself — trust should be evidenced, not asked for.',
+      },
+    ],
   },
   {
     id: 'reading-onchain-yield',
@@ -57,6 +85,20 @@ export const insights = [
       'The critical question is therefore simple to state and harder to answer: is the protocol paying me out of revenue, or out of emissions? A yield that survives the removal of token incentives is one worth holding. A yield that depends on them is a countdown.',
       { h: 'The risks beneath the rate' },
       'Even durable yield carries layered risk — smart-contract risk, counterparty risk, liquidity risk, and the risk that the underlying collateral is itself volatile. We require that each of these be identified and priced before any capital is committed. A 6% yield underwritten to its source is worth more to a portfolio than a 20% yield no one can explain.',
+    ],
+    faqs: [
+      {
+        q: 'What is on-chain yield?',
+        a: 'On-chain yield is income earned from activity on a blockchain network — for example transaction fees, lending spreads or trading volume shared with capital providers. A headline rate tells you almost nothing on its own; what matters is where the yield comes from and what must remain true for it to persist.',
+      },
+      {
+        q: 'How can I tell if an on-chain yield is sustainable?',
+        a: 'Trace it to its source. Fee-backed yield is paid from genuine economic activity and is, in principle, durable. Incentive-backed yield is paid in newly issued tokens to attract capital — it is funded by dilution and tends to compress the moment incentives are withdrawn. A yield that survives the removal of token incentives is one worth holding.',
+      },
+      {
+        q: 'What risks come with on-chain yield?',
+        a: 'Even durable yield carries layered risk: smart-contract risk, counterparty risk, liquidity risk, and the risk that the underlying collateral is itself volatile. We require each to be identified and priced before any capital is committed.',
+      },
     ],
   },
   {
@@ -79,6 +121,20 @@ export const insights = [
       { h: 'On what we owe you' },
       'Our duty is fiduciary before it is anything else. We seek to be right rather than to appear right, and we would rather forgo a return than compromise the standard by which we hold your capital. That is the commitment beneath every figure in the report that follows.',
     ],
+    faqs: [
+      {
+        q: 'What is the Digital Asset Stewardship Letter?',
+        a: 'It is our annual account, in plain terms, of how we have stewarded the capital entrusted to us — the decisions we made, the risks we accepted and declined, and the principles that guided both. It is not a marketing document; it is a record of conduct.',
+      },
+      {
+        q: 'How does NexusCapital approach governance over the assets it holds?',
+        a: 'We practise active ownership. We vote, engage, and where necessary decline to participate in protocol decisions we judge contrary to the long-term interests of token holders. Active ownership is not confined to public equities; it applies wherever we hold a stake and a voice.',
+      },
+      {
+        q: 'What does fiduciary duty mean in practice here?',
+        a: 'It means our duty to clients comes before anything else. We seek to be right rather than to appear right, and we would rather forgo a return than compromise the standard by which we hold client capital.',
+      },
+    ],
   },
   {
     id: 'bitcoin-treasury-reserve',
@@ -97,6 +153,20 @@ export const insights = [
       'Bitcoin’s volatility is not a flaw to be ignored; it is a parameter to be budgeted. A position sized to a defined risk contribution — rather than a headline capital figure — keeps the allocation within tolerances the organisation can live with through a full cycle. The question is never simply "how much should we buy," but "how much volatility are we prepared for this position to contribute."',
       { h: 'Accounting and operational reality' },
       'Treasurers must also account for the practical layer: custody arrangements that satisfy auditors, accounting treatment that reflects fair value, internal controls over transfers, and a clear policy governing when and how the position may change. A strategic reserve is a governance decision as much as an investment one. Approached with that seriousness, it can be a considered allocation; approached casually, it is a liability.',
+    ],
+    faqs: [
+      {
+        q: 'Should a company hold bitcoin on its balance sheet?',
+        a: 'It can be a considered allocation when treated seriously. The case rests on bitcoin being a scarce, liquid, globally portable asset with no counterparty. The discipline lies in the execution: a strategic position should be funded from excess reserves, never from working capital, and sized so a drawdown cannot force a sale at the wrong moment.',
+      },
+      {
+        q: 'How much bitcoin should a treasury hold?',
+        a: 'Volatility is a parameter to budget, not a flaw to ignore. A position sized to a defined risk contribution — rather than a headline capital figure — keeps the allocation within tolerances the organisation can live with through a full cycle. The question is how much volatility you are prepared for the position to contribute.',
+      },
+      {
+        q: 'What accounting and operational issues arise?',
+        a: 'Treasurers must address the practical layer: custody that satisfies auditors, accounting treatment that reflects fair value, internal controls over transfers, and a clear policy governing when and how the position may change. A strategic reserve is a governance decision as much as an investment one.',
+      },
     ],
   },
   {
@@ -117,6 +187,20 @@ export const insights = [
       { h: 'Pre-deciding the hard decisions' },
       'The worst moment to decide how much loss you can tolerate is during the loss. We define drawdown thresholds and the responses to them in advance, in writing, when judgement is clear. When the threshold is reached, we act on the rule rather than the emotion. Discipline of this kind is unglamorous, and it is the single largest determinant of whether a portfolio is still standing at the end of a cycle.',
     ],
+    faqs: [
+      {
+        q: 'Why is position sizing so important in digital assets?',
+        a: 'Because the mathematics of loss is unforgiving. A portfolio that falls 50% must rise 100% to recover; a fall of 80% requires a fivefold gain. In an asset class capable of such moves, the first objective of risk management is not to maximise return but to ensure the portfolio survives to compound.',
+      },
+      {
+        q: 'What is volatility targeting?',
+        a: 'Because the volatility of digital assets shifts dramatically across regimes, a fixed capital weight delivers wildly different risk over time. We instead target a volatility contribution: as an asset becomes more volatile the position is trimmed, and as it calms the position can grow — so portfolio risk stays roughly constant even as markets do not.',
+      },
+      {
+        q: 'How do you control drawdowns?',
+        a: 'We pre-decide the hard decisions. Drawdown thresholds and the responses to them are defined in advance, in writing, when judgement is clear. When a threshold is reached we act on the rule rather than the emotion.',
+      },
+    ],
   },
   {
     id: 'regulatory-perimeter-2026',
@@ -135,6 +219,20 @@ export const insights = [
       'The practical effect is that institutions can now access the asset class through regulated venues and custodians, with the legal certainty their mandates require. It also raises the bar: counterparties must be licensed, custody must meet defined standards, and reporting must satisfy the same scrutiny as any other holding. We regard these requirements as a benefit, not a burden — they screen out precisely the counterparties an institution should avoid.',
       { h: 'Staying ahead of change' },
       'Regulation in this space remains dynamic, and we treat regulatory monitoring as a standing function rather than a periodic exercise. The institutions best positioned are those that build to the spirit of the rules — transparency, segregation, accountability — rather than to the letter of any single regime that may yet evolve.',
+    ],
+    faqs: [
+      {
+        q: 'Can institutions legally hold digital assets?',
+        a: 'In major jurisdictions, yes — and increasingly through supervised channels. Maturing frameworks let institutions access the asset class via regulated venues and custodians, with the legal certainty their mandates require. Regulatory clarity is not a constraint on participation; it is a precondition for it.',
+      },
+      {
+        q: 'What is MiCA?',
+        a: 'Europe’s comprehensive framework for digital assets, which set an early template: licensing for service providers, clear rules for stablecoin issuance, and disclosure obligations institutions recognise from other markets. Other regimes across Asia and the Gulf have advanced along consistent lines — toward licensed custody, supervised intermediaries and defined investor protections.',
+      },
+      {
+        q: 'What does the regulatory perimeter mean for allocators?',
+        a: 'It raises the bar in a useful way: counterparties must be licensed, custody must meet defined standards, and reporting must satisfy the same scrutiny as any other holding. We regard these requirements as a benefit — they screen out precisely the counterparties an institution should avoid.',
+      },
     ],
   },
   {
@@ -155,6 +253,20 @@ export const insights = [
       { h: 'Resilience as the goal' },
       'The objective is a system that fails safe. The loss of any one key, the compromise of any one device, or the coercion of any one individual should be an incident the system absorbs, not a loss the client bears. That resilience — designed in advance and tested deliberately — is what separates genuinely institutional custody from storage that merely looks secure.',
     ],
+    faqs: [
+      {
+        q: 'What is the difference between multi-signature and MPC custody?',
+        a: 'Multi-signature requires several independent keys to authorise a transaction, with a defined quorum — say, three of five. Multi-party computation goes further: a single key is never assembled in one place at all, but generated and used as distributed shares that jointly produce a signature. Both split authority so no individual, device or location can act alone.',
+      },
+      {
+        q: 'Is cold storage enough for institutional custody?',
+        a: 'No. Cold storage solved one risk — exposure to network attackers — while leaving others untouched: the single key, the single operator, the single point at which a process could fail. Institutional custody has moved beyond it to distributed key-management and layered governance.',
+      },
+      {
+        q: 'What operational controls make custody genuinely institutional?',
+        a: 'The cryptography is necessary but not sufficient. What makes custody institutional is the governance around it: signers drawn from separate teams, withdrawal allow-lists, time-locks on large transfers, and independent reconciliation. A quorum means little if all signers report to the same person.',
+      },
+    ],
   },
   {
     id: 'tokenization-real-world-assets',
@@ -174,6 +286,20 @@ export const insights = [
       { h: 'A discerning approach' },
       'We expect tokenization to reshape settlement infrastructure over the coming years, and we engage with it accordingly. But we apply the same scrutiny we would to any holding: what is the underlying asset, who stands behind the claim, and does the on-chain representation genuinely improve the economics — or merely the marketing.',
     ],
+    faqs: [
+      {
+        q: 'What is tokenization of real-world assets?',
+        a: 'Tokenization represents ownership of an asset — money-market funds, private credit, government securities — as a digital token on a blockchain. It changes how an asset is held and transferred, not what the asset fundamentally is.',
+      },
+      {
+        q: 'Does tokenization reduce the risk of an asset?',
+        a: 'No. A tokenized credit instrument carries the same credit risk as its off-chain equivalent. A token is also only as reliable as the legal structure linking it to the underlying claim — and that link, not the token, is often where the real risk sits. We underwrite the asset and the structure first.',
+      },
+      {
+        q: 'Where does tokenization add genuine value?',
+        a: 'The benefits are operational: near-instant, around-the-clock settlement without a chain of intermediaries, fine divisibility that widens access, and programmable settlement that reduces reconciliation and counterparty risk. Where an asset suffers from slow, costly or opaque settlement, tokenization can meaningfully improve it.',
+      },
+    ],
   },
   {
     id: 'sustainable-protocol-yield',
@@ -192,6 +318,20 @@ export const insights = [
       'Staking introduces specific risks: lock-up periods that constrain liquidity, "slashing" penalties for validator misbehaviour, and the operational risk of the validator itself. And the reward is denominated in a volatile asset — a 5% staking yield on a token that falls 30% is not a 5% return. We assess each of these before treating staking income as part of a portfolio’s return.',
       { h: 'Underwriting the yield' },
       'Our test is the same one we apply to all on-chain income: trace the yield to its source, and ask what must remain true for it to persist. Staking yield backed by real network usage, on a network we would hold regardless, is a return worth capturing. Staking yield that is simply issuance dressed as income is a transfer, not a gain.',
+    ],
+    faqs: [
+      {
+        q: 'What is staking?',
+        a: 'Staking means committing assets to help secure a proof-of-stake network in return for rewards. It is often presented as a near risk-free yield, but it is neither risk-free nor uniform — understanding why is essential to treating it as a genuine source of return rather than a headline number.',
+      },
+      {
+        q: 'Is staking yield risk-free?',
+        a: 'No. Staking introduces lock-up periods that constrain liquidity, “slashing” penalties for validator misbehaviour, and the operational risk of the validator itself. The reward is also denominated in a volatile asset — a 5% staking yield on a token that falls 30% is not a 5% return.',
+      },
+      {
+        q: 'How do you tell sustainable staking yield from dilution?',
+        a: 'Staking rewards come from two places: protocol issuance (new tokens, which in isolation is dilution — value moved from holders who do not stake to those who do) and network fees (real payments from users). Yield backed by genuine network usage, on a network we would hold regardless, is a return worth capturing; issuance dressed as income is a transfer, not a gain.',
+      },
     ],
   },
 ];
