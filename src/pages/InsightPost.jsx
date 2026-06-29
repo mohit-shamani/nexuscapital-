@@ -19,6 +19,62 @@ function formatDate(iso) {
   });
 }
 
+// A paragraph segment is a plain string, an internal link ({ to, text }), an
+// external link ({ href, text }) or a to-be-filled source marker ({ source }).
+function renderSegment(seg, key) {
+  if (typeof seg === 'string') return seg;
+  if (seg.to) {
+    return (
+      <Link
+        key={key}
+        to={seg.to}
+        className="font-medium text-ink underline decoration-brass/40 underline-offset-4 transition-colors hover:text-brass hover:decoration-brass"
+      >
+        {seg.text}
+      </Link>
+    );
+  }
+  if (seg.href) {
+    return (
+      <a
+        key={key}
+        href={seg.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-ink underline decoration-brass/40 underline-offset-4 transition-colors hover:text-brass hover:decoration-brass"
+      >
+        {seg.text}
+      </a>
+    );
+  }
+  // Unfilled external source — visibly marked so it is easy to find and replace.
+  if (seg.source) {
+    return (
+      <sup
+        key={key}
+        title="Add an authoritative source"
+        className="mx-0.5 whitespace-nowrap rounded bg-brass/15 px-1 align-super text-[0.65em] font-medium text-brass"
+      >
+        {`{{ADD AUTHORITATIVE SOURCE: ${seg.source}}}`}
+      </sup>
+    );
+  }
+  return null;
+}
+
+// Resolve the curated "Related Insights" list, falling back to other posts so
+// the section always renders at least two cards.
+function relatedPosts(post, all) {
+  const picked = (post.related || [])
+    .map((id) => all.find((p) => p.id === id))
+    .filter(Boolean);
+  for (const p of all) {
+    if (picked.length >= 3) break;
+    if (p.id !== post.id && !picked.includes(p)) picked.push(p);
+  }
+  return picked.slice(0, 3);
+}
+
 export default function InsightPost() {
   const { id } = useParams();
   const post = insights.find((p) => p.id === id);
@@ -26,7 +82,7 @@ export default function InsightPost() {
   // Unknown slug — fall through to the 404 experience.
   if (!post) return <NotFound />;
 
-  const related = insights.filter((p) => p.id !== post.id).slice(0, 3);
+  const related = relatedPosts(post, insights);
 
   return (
     <PageWrapper>
@@ -62,17 +118,28 @@ export default function InsightPost() {
             viewport={{ once: true, margin: '-8% 0px' }}
             className="mt-12 space-y-6"
           >
-            {post.content?.map((block, i) =>
-              typeof block === 'string' ? (
+            {post.content?.map((block, i) => {
+              if (typeof block === 'string') {
+                return (
+                  <p key={i} className="text-lg leading-relaxed text-slatey">
+                    {block}
+                  </p>
+                );
+              }
+              if (block.h) {
+                return (
+                  <h2 key={i} className="pt-6 font-serif text-2xl font-light text-ink md:text-3xl">
+                    {block.h}
+                  </h2>
+                );
+              }
+              // Paragraph carrying inline links and/or source markers.
+              return (
                 <p key={i} className="text-lg leading-relaxed text-slatey">
-                  {block}
+                  {block.p.map((seg, j) => renderSegment(seg, j))}
                 </p>
-              ) : (
-                <h2 key={i} className="pt-6 font-serif text-2xl font-light text-ink md:text-3xl">
-                  {block.h}
-                </h2>
-              )
-            )}
+              );
+            })}
           </motion.div>
 
           {/* Per-article FAQ + FAQPage JSON-LD */}
@@ -90,7 +157,7 @@ export default function InsightPost() {
       {related.length > 0 && (
         <section className="bg-ivory-50 py-20 md:py-28">
           <Container>
-            <p className="eyebrow mb-12">Continue reading</p>
+            <p className="eyebrow mb-12">Related insights</p>
             <div className="grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-3">
               {related.map((rel, i) => (
                 <motion.div
