@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
-import Seo from '../components/utils/Seo.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
@@ -15,11 +14,11 @@ const timeline = [
   { year: '2026', text: 'Stewarding over half a trillion dollars for more than 320 institutions worldwide.' },
 ];
 
-const differentiators = [
-  { title: 'Research-Driven', body: 'Every decision begins with independent, fundamental research — grounded in network adoption, security and real utility, never noise or momentum.' },
-  { title: 'Disciplined Risk', body: 'Capital preservation is the discipline beneath everything we do. We enforce diversification, position limits and continuous downside monitoring across every mandate.' },
-  { title: 'Full Transparency', body: 'Clients receive regular reporting and complete visibility of their portfolio. How assets are held and how they are performing is never a black box.' },
-  { title: 'Secure Custody', body: 'Holdings are protected with bank-grade, multi-signature custody and rigorous operational controls — institutional-grade safekeeping by default.' },
+const leadership = [
+  { name: 'Eleanor Vance', role: 'Chief Investment Officer', tenure: '21 years at Nexus' },
+  { name: 'Marcus Thorne', role: 'Head of Credit', tenure: '17 years at Nexus' },
+  { name: 'Priya Anand', role: 'Head of Multi-Asset', tenure: '14 years at Nexus' },
+  { name: 'James Okonkwo', role: 'Head of Private Markets', tenure: '12 years at Nexus' },
 ];
 
 const values = [
@@ -31,11 +30,6 @@ const values = [
 export default function About() {
   return (
     <PageWrapper>
-      <Seo
-        title="About Us — Disciplined Digital Wealth Management"
-        path="/firm"
-        description="NexusCapital is an independent, partner-owned asset manager bringing decades of institutional discipline, bank-grade security and full transparency to digital asset management."
-      />
       <PageHero
         eyebrow="The Firm"
         title="Thirty-eight years of disciplined stewardship."
@@ -124,23 +118,29 @@ export default function About() {
         </Container>
       </section>
 
-      {/* Why Nexus */}
+      {/* Leadership */}
       <section className="bg-ivory py-28 md:py-36">
         <Container>
-          <SectionHeading eyebrow="Why Nexus" title="What sets our stewardship apart." className="mb-16" />
+          <SectionHeading eyebrow="Leadership" title="Stewards, not stars." className="mb-16" />
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {differentiators.map((item, i) => (
+            {leadership.map((person, i) => (
               <motion.div
-                key={item.title}
+                key={person.name}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
               >
-                <span className="font-serif text-sm text-brass">0{i + 1}</span>
-                <h3 className="mt-5 font-serif text-xl font-normal text-ink">{item.title}</h3>
-                <p className="mt-4 leading-relaxed text-slatey">{item.body}</p>
+                {/* Portrait placeholder — a refined tonal panel */}
+                <div className="mb-6 aspect-[4/5] w-full overflow-hidden bg-gradient-to-b from-ink-600 to-ink">
+                  <div className="flex h-full items-center justify-center font-serif text-5xl font-light text-ivory/15">
+                    {person.name.split(' ').map((n) => n[0]).join('')}
+                  </div>
+                </div>
+                <h3 className="font-serif text-xl font-normal text-ink">{person.name}</h3>
+                <p className="mt-1 text-sm text-brass">{person.role}</p>
+                <p className="mt-1 text-sm text-slatey">{person.tenure}</p>
               </motion.div>
             ))}
           </div>

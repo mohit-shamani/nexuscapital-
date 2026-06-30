@@ -18,7 +18,18 @@
       "Bash(ls -1 *.toml *.json)",
       "Bash(ls -la public/)",
       "Bash(ls vercel.json netlify.toml)",
-      "Bash(find public *)"
+      "Bash(find public *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Read(//tmp/**)",
+      "Bash(sed -n '/prerender:head:start/,/prerender:head:end/p' insights/institutional-allocation-2026/index.html)",
+      "Bash(sed -n '/prerender:head:start/,/prerender:head:end/p' insights/mpc-multisig-custody/index.html)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(node --input-type=module *)",
+      "Bash(curl -sSI \"https://nexuscapital.in/insights/institutional-allocation-2026\")",
+      "Bash(curl -sSI \"https://www.nexuscapital.in/\")",
+      "Bash(curl -sS \"https://nexuscapital.in/insights/institutional-allocation-2026\")",
+      "Bash(curl -sSL \"https://nexuscapital.in/insights/institutional-allocation-2026\")",
+      "PowerShell(git check-ignore *)"
     ]
   }
 }
