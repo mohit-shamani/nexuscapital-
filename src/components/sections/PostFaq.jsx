@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import { fadeUp, EASE_EXPO } from '../../lib/motion.js';
 
 /**
  * Per-article FAQ accordion. Takes a `faqs` array ([{ q, a }]) defined on each
- * insight post and mirrors the answers into FAQPage JSON-LD so they are eligible
- * for rich results. Sized for the article reading column, not a full-width band.
+ * insight post. The matching FAQPage JSON-LD is generated centrally in
+ * lib/schema.js (folded into the article graph) so the structured data lives in
+ * one place and is never duplicated. This component is presentation-only.
+ * Sized for the article reading column, not a full-width band.
  */
 function PostFaqItem({ item, isOpen, onToggle, index }) {
   const panelId = `post-faq-panel-${index}`;
@@ -73,22 +74,8 @@ export default function PostFaq({ faqs }) {
 
   if (!faqs || faqs.length === 0) return null;
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
-  };
-
   return (
     <section className="mt-16 border-t border-ink/10 pt-12">
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      </Helmet>
-
       <p className="eyebrow mb-6">FAQ</p>
       <h2 className="mb-8 font-serif text-2xl font-light text-ink md:text-3xl">
         Frequently asked questions

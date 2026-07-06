@@ -2,7 +2,11 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
 import Seo from '../components/utils/Seo.jsx';
+import ArticleJsonLd from '../components/utils/ArticleJsonLd.jsx';
+import ReadingProgress from '../components/utils/ReadingProgress.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
+import Breadcrumbs from '../components/sections/Breadcrumbs.jsx';
+import ArticleToc from '../components/sections/ArticleToc.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
 import PostFaq from '../components/sections/PostFaq.jsx';
@@ -10,6 +14,8 @@ import InsightVisual from '../components/ui/InsightVisual.jsx';
 import NotFound from './NotFound.jsx';
 import { insights } from '../data/insights.js';
 import { fadeUp } from '../lib/motion.js';
+import { extractHeadings, computeReadingTime, getRelatedPosts } from '../lib/article.js';
+import useScrollSpy from '../hooks/useScrollSpy.js';
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString('en-GB', {
@@ -62,19 +68,6 @@ function renderSegment(seg, key) {
   return null;
 }
 
-// Resolve the curated "Related Insights" list, falling back to other posts so
-// the section always renders at least two cards.
-function relatedPosts(post, all) {
-  const picked = (post.related || [])
-    .map((id) => all.find((p) => p.id === id))
-    .filter(Boolean);
-  for (const p of all) {
-    if (picked.length >= 3) break;
-    if (p.id !== post.id && !picked.includes(p)) picked.push(p);
-  }
-  return picked.slice(0, 3);
-}
-
 export default function InsightPost() {
   const { id } = useParams();
   const post = insights.find((p) => p.id === id);
@@ -82,33 +75,71 @@ export default function InsightPost() {
   // Unknown slug — fall through to the 404 experience.
   if (!post) return <NotFound />;
 
-  const related = relatedPosts(post, insights);
+  // Everything below is derived automatically from the post — no per-article
+  // configuration. Adding a new entry to insights.js is all a future article
+  // needs to get a TOC, reading time, schema, breadcrumbs and related links.
+  const headings = extractHeadings(post.content);
+  const headingByIndex = new Map(headings.map((h) => [h.index, h]));
+  const readingMinutes = computeReadingTime(post.content);
+  const related = getRelatedPosts(post, insights, 3);
+  const activeId = useScrollSpy(headings.map((h) => h.id));
+
+  const toc = <ArticleToc headings={headings} activeId={activeId} />;
 
   return (
     <PageWrapper>
+      {/* Reading progress (fixed, transform-only — no layout shift) */}
+      <ReadingProgress />
+
       <Seo
         title={post.title}
         path={`/insights/${post.id}`}
         description={post.excerpt}
+        type="article"
+        image={post.image}
+        article={post}
       />
+      {/* Article + Breadcrumb + Organization + FAQ JSON-LD (single graph) */}
+      <ArticleJsonLd post={post} />
 
       <PageHero eyebrow={post.category} title={post.title} intro={post.excerpt} />
 
       <article className="bg-ivory py-20 md:py-28">
-        <Container className="max-w-3xl">
+        <Container className="relative max-w-3xl">
+          {/* Sticky Table of Contents in the left gutter (large screens) */}
+          {headings.length >= 2 && (
+            <aside className="pointer-events-none absolute right-full top-0 hidden h-full pr-10 xl:block">
+              <div className="pointer-events-auto sticky top-28 w-48">{toc}</div>
+            </aside>
+          )}
+
+          {/* Breadcrumb trail */}
+          <Breadcrumbs
+            items={[
+              { label: 'Home', to: '/' },
+              { label: 'Insights', to: '/insights' },
+              { label: post.title },
+            ]}
+          />
+
           {/* Byline */}
-          <div className="flex flex-wrap items-center gap-4 border-b border-ink/10 pb-8 text-sm text-slatey">
+          <div className="mt-8 flex flex-wrap items-center gap-4 border-b border-ink/10 pb-8 text-sm text-slatey">
             <span className="text-ink">{post.author}</span>
             <span className="h-1 w-1 rounded-full bg-slatey/50" />
             <span>{formatDate(post.date)}</span>
             <span className="h-1 w-1 rounded-full bg-slatey/50" />
-            <span>{post.readingTime} read</span>
+            <span>{readingMinutes} min read</span>
           </div>
 
           {/* Lead artwork */}
           <div className="mt-10 aspect-[16/9] w-full overflow-hidden">
             <InsightVisual category={post.category} />
           </div>
+
+          {/* Inline Table of Contents (below the sticky breakpoint) */}
+          {headings.length >= 2 && (
+            <div className="mt-10 border-y border-ink/10 py-6 xl:hidden">{toc}</div>
+          )}
 
           {/* Body */}
           <motion.div
@@ -128,9 +159,24 @@ export default function InsightPost() {
               }
               if (block.h) {
                 return (
-                  <h2 key={i} className="pt-6 font-serif text-2xl font-light text-ink md:text-3xl">
+                  <h2
+                    key={i}
+                    id={headingByIndex.get(i)?.id}
+                    className="scroll-mt-28 pt-6 font-serif text-2xl font-light text-ink md:text-3xl"
+                  >
                     {block.h}
                   </h2>
+                );
+              }
+              if (block.h3) {
+                return (
+                  <h3
+                    key={i}
+                    id={headingByIndex.get(i)?.id}
+                    className="scroll-mt-28 pt-4 font-serif text-xl font-light text-ink md:text-2xl"
+                  >
+                    {block.h3}
+                  </h3>
                 );
               }
               // Paragraph carrying inline links and/or source markers.
@@ -142,7 +188,7 @@ export default function InsightPost() {
             })}
           </motion.div>
 
-          {/* Per-article FAQ + FAQPage JSON-LD */}
+          {/* Per-article FAQ (JSON-LD lives in the central article graph) */}
           <PostFaq faqs={post.faqs} />
 
           <div className="mt-16 border-t border-ink/10 pt-8">
@@ -153,11 +199,11 @@ export default function InsightPost() {
         </Container>
       </article>
 
-      {/* Related reading */}
+      {/* Continue reading — auto-selected related articles */}
       {related.length > 0 && (
         <section className="bg-ivory-50 py-20 md:py-28">
           <Container>
-            <p className="eyebrow mb-12">Related insights</p>
+            <p className="eyebrow mb-12">Continue reading</p>
             <div className="grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-3">
               {related.map((rel, i) => (
                 <motion.div
