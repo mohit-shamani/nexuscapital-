@@ -6,7 +6,7 @@
 // breadcrumb) and guarantees a single, non-duplicated schema block per page.
 
 import { SITE, BASE_URL, LOGO_URL, DEFAULT_DESCRIPTION, ORG_SAME_AS } from './site.js';
-import { getWordCount, parseAuthor } from './article.js';
+import { getWordCount, parseAuthor, getDefinition } from './article.js';
 
 const ORG_ID = `${BASE_URL}/#organization`;
 
@@ -74,7 +74,27 @@ export function articleNode(post) {
   if (image) node.image = [image];
   if (Array.isArray(post.tags) && post.tags.length) node.keywords = post.tags.join(', ');
 
+  // Link the article to the concept it defines (see definitionNode).
+  if (getDefinition(post)) node.about = { '@id': `${url}#definition` };
+
   return node;
+}
+
+/**
+ * DefinedTerm node for the article's "What is …?" definition — structured data
+ * for answer engines, mirroring the visible Definition Block. Returns null when
+ * the post has no definition, so nothing empty is emitted.
+ */
+export function definitionNode(post) {
+  const def = getDefinition(post);
+  if (!def) return null;
+  return {
+    '@type': 'DefinedTerm',
+    '@id': `${articleUrl(post)}#definition`,
+    name: def.term,
+    description: def.text,
+    inDefinedTermSet: `${BASE_URL}/insights`,
+  };
 }
 
 /** FAQPage node from the post's `faqs`, or null when there are none. */
@@ -97,6 +117,8 @@ export function faqNode(post) {
  */
 export function articleGraph(post) {
   const graph = [organizationNode(), breadcrumbNode(post), articleNode(post)];
+  const definition = definitionNode(post);
+  if (definition) graph.push(definition);
   const faq = faqNode(post);
   if (faq) graph.push(faq);
   return { '@context': 'https://schema.org', '@graph': graph };

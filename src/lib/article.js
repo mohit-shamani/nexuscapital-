@@ -90,6 +90,43 @@ export function computeReadingTime(content = [], wpm = WORDS_PER_MINUTE) {
   return Math.max(1, Math.round(getWordCount(content) / wpm));
 }
 
+/**
+ * Normalise a post's optional `definition` into a display-ready answer, or null
+ * when absent/empty (so the Definition Block can hide with no placeholder).
+ * Accepts either a plain string or an object `{ term, text, question }`.
+ * Produces a question ("What is …?") tuned for answer engines.
+ */
+export function getDefinition(post) {
+  const raw = post && post.definition;
+  if (!raw) return null;
+
+  if (typeof raw === 'string') {
+    const text = raw.trim();
+    if (!text) return null;
+    const term = (post.title || '').trim();
+    return { term, text, question: `What is ${term}?` };
+  }
+
+  const text = (raw.text || '').trim();
+  if (!text) return null; // no answer → hide, never render an empty block
+  const term = (raw.term || '').trim() || (post.title || '').trim();
+  const question = (raw.question || '').trim() || `What is ${term}?`;
+  return { term, text, question };
+}
+
+/**
+ * Index at which to insert the Definition Block — immediately after the
+ * introduction, i.e. just before the first heading. Falls back to after the
+ * first paragraph when an article has no headings.
+ */
+export function getIntroEndIndex(content = []) {
+  const firstHeading = content.findIndex(
+    (b) => b && typeof b === 'object' && (typeof b.h === 'string' || typeof b.h3 === 'string')
+  );
+  if (firstHeading !== -1) return firstHeading;
+  return Math.min(1, content.length);
+}
+
 /** Split an "Name, Role" author string into a structured author. */
 export function parseAuthor(author) {
   if (!author) return { name: '' };

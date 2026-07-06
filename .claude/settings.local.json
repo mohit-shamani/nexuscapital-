@@ -29,7 +29,8 @@
       "Bash(curl -sSI \"https://www.nexuscapital.in/\")",
       "Bash(curl -sS \"https://nexuscapital.in/insights/institutional-allocation-2026\")",
       "Bash(curl -sSL \"https://nexuscapital.in/insights/institutional-allocation-2026\")",
-      "PowerShell(git check-ignore *)"
+      "PowerShell(git check-ignore *)",
+      "Bash(node -e ' *)"
     ]
   }
 }

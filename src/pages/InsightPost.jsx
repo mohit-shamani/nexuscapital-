@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
@@ -7,6 +8,7 @@ import ReadingProgress from '../components/utils/ReadingProgress.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Breadcrumbs from '../components/sections/Breadcrumbs.jsx';
 import ArticleToc from '../components/sections/ArticleToc.jsx';
+import DefinitionBlock from '../components/sections/DefinitionBlock.jsx';
 import Container from '../components/ui/Container.jsx';
 import CTA from '../components/sections/CTA.jsx';
 import PostFaq from '../components/sections/PostFaq.jsx';
@@ -14,7 +16,13 @@ import InsightVisual from '../components/ui/InsightVisual.jsx';
 import NotFound from './NotFound.jsx';
 import { insights } from '../data/insights.js';
 import { fadeUp } from '../lib/motion.js';
-import { extractHeadings, computeReadingTime, getRelatedPosts } from '../lib/article.js';
+import {
+  extractHeadings,
+  computeReadingTime,
+  getRelatedPosts,
+  getDefinition,
+  getIntroEndIndex,
+} from '../lib/article.js';
 import useScrollSpy from '../hooks/useScrollSpy.js';
 
 function formatDate(iso) {
@@ -83,8 +91,43 @@ export default function InsightPost() {
   const readingMinutes = computeReadingTime(post.content);
   const related = getRelatedPosts(post, insights, 3);
   const activeId = useScrollSpy(headings.map((h) => h.id));
+  const definition = getDefinition(post);
+  const introEnd = getIntroEndIndex(post.content);
 
   const toc = <ArticleToc headings={headings} activeId={activeId} />;
+
+  // Render a single content block (paragraph, H2, H3 or linked paragraph).
+  const renderBlock = (block, i) => {
+    if (typeof block === 'string') {
+      return <p className="text-lg leading-relaxed text-slatey">{block}</p>;
+    }
+    if (block.h) {
+      return (
+        <h2
+          id={headingByIndex.get(i)?.id}
+          className="scroll-mt-28 pt-6 font-serif text-2xl font-light text-ink md:text-3xl"
+        >
+          {block.h}
+        </h2>
+      );
+    }
+    if (block.h3) {
+      return (
+        <h3
+          id={headingByIndex.get(i)?.id}
+          className="scroll-mt-28 pt-4 font-serif text-xl font-light text-ink md:text-2xl"
+        >
+          {block.h3}
+        </h3>
+      );
+    }
+    // Paragraph carrying inline links and/or source markers.
+    return (
+      <p className="text-lg leading-relaxed text-slatey">
+        {block.p.map((seg, j) => renderSegment(seg, j))}
+      </p>
+    );
+  };
 
   return (
     <PageWrapper>
@@ -149,43 +192,17 @@ export default function InsightPost() {
             viewport={{ once: true, margin: '-8% 0px' }}
             className="mt-12 space-y-6"
           >
-            {post.content?.map((block, i) => {
-              if (typeof block === 'string') {
-                return (
-                  <p key={i} className="text-lg leading-relaxed text-slatey">
-                    {block}
-                  </p>
-                );
-              }
-              if (block.h) {
-                return (
-                  <h2
-                    key={i}
-                    id={headingByIndex.get(i)?.id}
-                    className="scroll-mt-28 pt-6 font-serif text-2xl font-light text-ink md:text-3xl"
-                  >
-                    {block.h}
-                  </h2>
-                );
-              }
-              if (block.h3) {
-                return (
-                  <h3
-                    key={i}
-                    id={headingByIndex.get(i)?.id}
-                    className="scroll-mt-28 pt-4 font-serif text-xl font-light text-ink md:text-2xl"
-                  >
-                    {block.h3}
-                  </h3>
-                );
-              }
-              // Paragraph carrying inline links and/or source markers.
-              return (
-                <p key={i} className="text-lg leading-relaxed text-slatey">
-                  {block.p.map((seg, j) => renderSegment(seg, j))}
-                </p>
-              );
-            })}
+            {post.content?.map((block, i) => (
+              <Fragment key={i}>
+                {/* "What is …?" definition, immediately after the introduction */}
+                {definition && i === introEnd && <DefinitionBlock definition={definition} />}
+                {renderBlock(block, i)}
+              </Fragment>
+            ))}
+            {/* Fallback placement when the article has no headings */}
+            {definition && introEnd >= (post.content?.length || 0) && (
+              <DefinitionBlock definition={definition} />
+            )}
           </motion.div>
 
           {/* Per-article FAQ (JSON-LD lives in the central article graph) */}

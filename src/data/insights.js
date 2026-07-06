@@ -8,6 +8,10 @@ export const insights = [
     title: 'The Institutional Allocation to Digital Assets',
     excerpt:
       'Why a measured, risk-budgeted allocation — not a trade — is how serious capital approaches the asset class.',
+    definition: {
+      term: 'an institutional allocation to digital assets',
+      text: 'An institutional allocation to digital assets is a strategic, risk-budgeted position in cryptocurrencies — sized by the risk it contributes rather than the headline capital committed, custodied through institutional infrastructure, and rebalanced on a rule. It treats crypto as a long-horizon allocation built to withstand volatility, not a tactical trade that reacts to it.',
+    },
     date: '2026-05-18',
     readingTime: '8 min',
     author: 'Eleanor Vance, CIO',
@@ -70,6 +74,10 @@ export const insights = [
     title: 'Custody Is the Foundation of Trust',
     excerpt:
       'As institutions enter digital assets, how assets are held and secured matters more than any single trade.',
+    definition: {
+      term: 'crypto custody',
+      text: 'Crypto custody is how digital assets are securely held and controlled on an institution’s behalf. Because blockchains remove the intermediaries that safeguard traditional assets, custody moves to the centre of the risk conversation — combining distributed key-management with operational governance so that no single person, device or location can move client assets.',
+    },
     date: '2026-04-02',
     readingTime: '6 min',
     author: 'Marcus Thorne, Head of Security',
@@ -131,6 +139,10 @@ export const insights = [
     title: 'Reading Risk in On-Chain Yield',
     excerpt:
       'A framework for separating sustainable, risk-adjusted yield from incentives that cannot last.',
+    definition: {
+      term: 'on-chain yield',
+      text: 'On-chain yield is income earned from activity on a blockchain network — such as transaction fees, lending spreads or trading volume shared with capital providers. A headline rate reveals little on its own; what matters is whether the yield is paid from genuine revenue or from newly issued tokens that dilute existing holders.',
+    },
     date: '2026-02-21',
     readingTime: '7 min',
     author: 'Priya Anand, Portfolio Manager',
@@ -192,6 +204,10 @@ export const insights = [
     title: 'The 2026 Digital Asset Stewardship Letter',
     excerpt:
       'Our annual account of how we manage risk, security and governance on behalf of the capital entrusted to us.',
+    definition: {
+      term: 'the Digital Asset Stewardship Letter',
+      text: 'The Digital Asset Stewardship Letter is NexusCapital’s annual account, in plain terms, of how it has stewarded the capital entrusted to it — the decisions made, the risks accepted and declined, and the principles of discipline, security and governance that guided both. It is a record of fiduciary conduct, not a marketing document.',
+    },
     date: '2026-01-15',
     readingTime: '12 min',
     author: 'The Investment Committee',
@@ -246,6 +262,10 @@ export const insights = [
     title: 'Bitcoin as an Institutional Treasury Reserve',
     excerpt:
       'What corporate treasurers and allocators should weigh before holding a strategic position — liquidity, volatility budgeting and accounting reality.',
+    definition: {
+      term: 'a bitcoin treasury reserve',
+      text: 'A bitcoin treasury reserve is a strategic allocation to bitcoin held on a corporate or institutional balance sheet alongside cash and short-duration instruments. Treated seriously, it is funded from excess reserves rather than working capital and sized to a defined volatility budget, so that a drawdown can never force a sale at the wrong moment.',
+    },
     date: '2026-06-10',
     readingTime: '9 min',
     author: 'Eleanor Vance, CIO',
@@ -307,6 +327,10 @@ export const insights = [
     title: 'Sizing Positions for Survival: A Note on Drawdown Control',
     excerpt:
       'Returns are won over years and lost in weeks. How disciplined position limits and volatility targeting keep a portfolio in the game.',
+    definition: {
+      term: 'position sizing',
+      text: 'Position sizing is the discipline of limiting how much risk any single asset may contribute to a portfolio. In volatile markets it targets a constant volatility contribution rather than a fixed capital weight — trimming positions as assets grow more volatile — so the portfolio survives drawdowns and stays in the game to compound.',
+    },
     date: '2026-05-02',
     readingTime: '7 min',
     author: 'Julian Reyes, Head of Risk',
@@ -359,6 +383,10 @@ export const insights = [
     title: 'The New Regulatory Perimeter for Digital Assets',
     excerpt:
       'From MiCA to evolving guidance in Asia and the Gulf, a practical map of the rules now shaping how institutions can hold and trade crypto.',
+    definition: {
+      term: 'the regulatory perimeter for digital assets',
+      text: 'The regulatory perimeter for digital assets is the evolving set of rules — from Europe’s MiCA to regimes across Asia and the Gulf — governing how institutions may hold and trade crypto. It centres on licensed custody, supervised intermediaries and disclosure, turning regulatory clarity into a precondition for serious capital rather than a constraint on it.',
+    },
     date: '2026-04-20',
     readingTime: '10 min',
     author: 'Sofia Marchetti, Regulatory Counsel',
@@ -419,6 +447,10 @@ export const insights = [
     title: 'Beyond Cold Storage: MPC and Multi-Signature Custody',
     excerpt:
       'How modern key-management models remove single points of failure — and the operational controls that make them genuinely institutional.',
+    definition: {
+      term: 'MPC and multi-signature custody',
+      text: 'MPC and multi-signature custody are key-management models that remove single points of failure. Multi-signature requires a quorum of independent keys to authorise a transaction; multi-party computation never assembles a single key at all, using distributed shares to jointly produce a signature. Both split authority so no individual, device or location can move assets alone.',
+    },
     date: '2026-03-14',
     readingTime: '8 min',
     author: 'Marcus Thorne, Head of Security',
@@ -480,6 +512,10 @@ export const insights = [
     title: 'Tokenization and the Rise of Real-World Assets',
     excerpt:
       'As treasuries, credit and funds move on-chain, we examine where tokenization adds real efficiency — and where it is merely a wrapper.',
+    definition: {
+      term: 'tokenization of real-world assets',
+      text: 'Tokenization of real-world assets represents ownership of an asset — money-market funds, private credit or government securities — as a digital token on a blockchain. It can make settlement near-instant, around-the-clock and finely divisible, but it changes how an asset is held and transferred, not the underlying asset or the risk it carries.',
+    },
     date: '2026-03-01',
     readingTime: '9 min',
     author: 'Priya Anand, Portfolio Manager',
@@ -541,6 +577,10 @@ export const insights = [
     title: 'Sustainable Yield: Staking and Protocol Economics',
     excerpt:
       'Separating durable, fee-backed return from emissions that simply move value between holders — a framework for underwriting on-chain income.',
+    definition: {
+      term: 'sustainable staking yield',
+      text: 'Sustainable staking yield is the return from securing a proof-of-stake network that is backed by real network fees rather than token issuance. Fee-backed rewards reflect genuine usage and can persist; issuance is dilution dressed as income — value moved between holders, not a true gain — and tends to compress once incentives are withdrawn.',
+    },
     date: '2026-02-05',
     readingTime: '7 min',
     author: 'Priya Anand, Portfolio Manager',
