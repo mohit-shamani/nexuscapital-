@@ -2,6 +2,205 @@
 // { h: '…' } is a sub-heading. Rendered by src/pages/InsightPost.jsx.
 export const insights = [
   {
+    id: 'institutional-crypto-asset-management',
+    related: [
+      'institutional-allocation-2026',
+      'custody-foundation-of-trust',
+      'regulatory-perimeter-2026',
+    ],
+    category: 'Institutional Guide',
+    title: 'What Is Institutional Crypto Asset Management? (Complete Guide)',
+    excerpt:
+      'A complete guide to institutional crypto asset management — how family offices, HNWIs and institutions custody, build and manage digital asset portfolios.',
+    definition: {
+      term: 'institutional crypto asset management',
+      question: 'What is institutional crypto asset management?',
+      text: 'Institutional crypto asset management is the professional management of digital assets on behalf of institutions, family offices and high-net-worth investors. It applies the same portfolio construction, risk management, compliance and custody disciplines used across traditional asset classes to cryptocurrencies — treating them as a governed, risk-budgeted allocation held through institutional-grade custody and reported transparently, rather than as a speculative trade reacting to price.',
+    },
+    date: '2026-07-13',
+    readingTime: '15 min',
+    author: 'The Investment Committee',
+    content: [
+      {
+        p: [
+          'For institutional allocators, the question about digital assets is no longer whether the asset class merits attention, but how it should be owned, controlled and governed. Over the past decade the participants have changed: what began as a retail phenomenon is now the subject of ',
+          {
+            href: 'https://www.fidelitydigitalassets.com/research-and-insights',
+            text: 'dedicated institutional research desks',
+          },
+          ', regulated custody, and formal allocation policy at family offices, endowments and corporate treasuries.',
+        ],
+      },
+      'This guide sets out what institutional crypto asset management is, how it works in practice, and why it differs — structurally, not cosmetically — from the way individuals typically buy and hold cryptocurrency. It is written for allocators who already understand portfolio theory, fiduciary duty and operational risk, and who want to understand how those disciplines translate to a newer and more volatile asset class.',
+      { h: 'What Is Institutional Crypto Asset Management?' },
+      'Institutional crypto asset management is the professional, discretionary or advisory management of digital assets on behalf of qualified investors — institutions, family offices and high-net-worth individuals — under a defined mandate. It brings the full apparatus of traditional asset management to cryptocurrencies and tokenised instruments: an investment policy, a portfolio construction process, an independent risk framework, institutional-grade custody, compliance controls and transparent reporting.',
+      'The distinction matters. Buying a cryptocurrency and holding it in a personal wallet is a transaction. Institutional crypto asset management is a governed process in which the transaction is only the final, and least important, step. Before any capital is committed, the mandate defines the role the allocation plays in the wider portfolio, the risk it is permitted to contribute, the assets and vehicles that are eligible, the custody arrangements that will hold it, and the reporting that will evidence how it is being managed.',
+      {
+        p: [
+          'In practice, the discipline rests on four pillars: ',
+          { to: '/insights/institutional-allocation-2026', text: 'strategic allocation' },
+          ' (why and how much), portfolio construction (in what form), risk management (within what tolerances) and custody (held how, and controlled by whom). The remainder of this guide examines each in turn.',
+        ],
+      },
+      { h: 'Why Institutional Investors Are Entering Digital Assets' },
+      'Institutional interest in digital assets is driven by portfolio considerations rather than enthusiasm for the technology itself. Allocators are evaluating the asset class for the same reasons they evaluate any candidate allocation: its potential return characteristics, its correlation with existing holdings, its liquidity, and the maturity of the infrastructure required to hold it safely.',
+      'Several structural developments have lowered the barriers that once kept serious capital on the sidelines. Regulated custodians now hold digital assets to institutional standards. Regulated market access — including exchange-traded products in several jurisdictions — allows exposure without direct key management. Accounting guidance and audit practices have matured. And a body of independent research has developed the language allocators need to size and justify a position.',
+      { h3: 'The most commonly cited rationales' },
+      'When institutions articulate the case for an allocation, a consistent set of arguments recurs: a potential diversification benefit relative to traditional assets; the properties of a scarce, liquid, globally portable asset with no single counterparty; and a strategic desire to understand an asset class that a firm’s clients or beneficiaries increasingly ask about. None of these rationales requires a forecast of price. Each can be assessed on its merits and, crucially, sized so that being wrong is survivable.',
+      {
+        p: [
+          'What unites credible institutional entrants is temperament. They approach digital assets as an allocation decision, not a trade — a distinction explored in depth in our note on the ',
+          { to: '/insights/institutional-allocation-2026', text: 'institutional allocation to digital assets' },
+          '.',
+        ],
+      },
+      { h: 'How Institutional Crypto Asset Management Works' },
+      'Institutional crypto asset management works as a governed lifecycle that runs from mandate to reporting, with independent controls at each stage. It is deliberately unglamorous: the value lies in the process, not in any single decision.',
+      { h3: 'From mandate to reporting' },
+      'The lifecycle typically proceeds as follows. First, an investment mandate and policy define objectives, constraints, eligible assets and risk limits. Second, a portfolio is constructed within those limits. Third, custody and operational infrastructure are established before any material capital moves. Fourth, positions are executed through vetted venues with best-execution and counterparty controls. Fifth, the portfolio is monitored, rebalanced on a rule and reviewed by an independent risk function. Finally, holdings and performance are reported transparently to the client on a defined cadence.',
+      'Governance sits above the entire lifecycle. Segregation of duties ensures that the people who decide on a trade are not the people who settle it, and that neither can move assets alone. An investment committee owns the policy; an independent risk function owns the limits; and custody is structured so that no single individual can unilaterally transfer client assets. This separation of powers is the quiet difference between an institutional process and an individual one.',
+      { h3: 'Execution and liquidity' },
+      'Execution deserves particular attention because digital asset markets remain fragmented across many venues with varying depth, and prices can differ meaningfully between them. An institutional manager therefore treats execution as a controlled activity in its own right: routing orders across vetted venues, monitoring for slippage and market impact, and holding as little as possible on any single exchange at any time. Assets are swept to custody rather than left resting on a trading venue, so that a venue failure does not become a client loss. Liquidity is assessed not in ordinary conditions but in stressed ones — the relevant question is whether a position can be exited in a disorderly market, not a calm one.',
+      { h: 'Portfolio Construction Process' },
+      'Portfolio construction in digital assets is the process of translating a mandate into a specific, diversified set of positions sized by the risk each contributes rather than the capital each absorbs. The objective is a portfolio that expresses the intended exposure while remaining within its risk budget through a full market cycle.',
+      { h3: 'Defining the objective and universe' },
+      'Construction begins with the role the allocation is meant to play — diversification, long-horizon growth exposure, or a specific thematic position — and the eligible universe that role implies. A conservative mandate may confine itself to the largest, most liquid assets and regulated vehicles; a broader mandate may include a considered sleeve of network and infrastructure tokens, each admitted only after independent due diligence.',
+      { h3: 'Risk budgeting and sizing' },
+      'Because digital assets carry high standalone volatility, position sizing is governed by risk contribution, not headline weight. The manager asks how much risk the allocation should contribute to the total portfolio and sizes from there. In most institutional mandates this results in a low-single-digit percentage of total assets — enough to be meaningful, small enough that a severe drawdown does not threaten the broader portfolio. Sizing to survival, rather than to conviction, is the principle that keeps an allocation intact long enough to matter.',
+      {
+        p: [
+          'Diversification is then applied across assets, sectors and access vehicles, and the portfolio is rebalanced on a rule rather than a reaction. We examine the mechanics of surviving volatility in our note on ',
+          { to: '/insights/position-sizing-drawdown-control', text: 'position sizing and drawdown control' },
+          '.',
+        ],
+      },
+      { h: 'Risk Management Framework' },
+      'A risk management framework for digital assets is the independent system of limits, monitoring and controls that keeps a portfolio within its mandate as market conditions change. In an institutional setting it is owned by a function separate from the one that makes investment decisions, so that limits cannot be quietly relaxed to accommodate a position.',
+      'The framework addresses several distinct categories of risk. Market risk — the volatility and drawdown characteristic of the asset class — is managed through sizing, diversification and rebalancing rules. Liquidity risk is managed by favouring assets and venues that can be exited in stressed conditions without disproportionate impact. Counterparty risk is managed by diversifying and vetting exchanges, custodians and lending counterparties, and by minimising assets left on any single venue.',
+      { h3: 'Risks specific to digital assets' },
+      {
+        p: [
+          'Alongside familiar risks, the asset class introduces categories that traditional frameworks do not fully anticipate: smart-contract and protocol risk, on-chain settlement risk, and the operational risk of key management itself. Firms such as ',
+          {
+            href: 'https://www.chainalysis.com/blog/',
+            text: 'blockchain analytics providers',
+          },
+          ' now supply the transaction-monitoring and compliance tooling that allows managers to screen counterparties and demonstrate the provenance of assets — a capability with no direct analogue in traditional markets. Each risk is identified, priced and, where possible, mitigated before capital is committed, on the principle that an unpriced risk is an uncontrolled one.',
+        ],
+      },
+      { h: 'Secure Custody & Asset Protection' },
+      'Custody is how digital assets are securely held and controlled on an investor’s behalf, and in this asset class it is the centre of the risk conversation rather than a back-office afterthought. Because blockchains remove the intermediaries that safeguard traditional assets, the question of who controls the private keys is inseparable from the question of who owns the asset.',
+      { h3: 'Removing single points of failure' },
+      'Institutional custody begins with a principle: no single person, device or location should be able to move client assets. Modern key management — whether multi-party computation (MPC) or multi-signature — distributes signing authority so that a transfer requires a quorum of independent approvals. A compromised device or a coerced individual is no longer sufficient to cause loss. Around that cryptographic core sits operational governance: segregation of duties, withdrawal allow-lists, time-locks on large transfers and independent reconciliation.',
+      {
+        p: [
+          'Asset protection also extends to the arrangements around custody — the legal segregation of client assets, independent audits of controls, and, in some cases, insurance. We examine the mechanics of distributed key management in our note on ',
+          { to: '/insights/mpc-multisig-custody', text: 'MPC and multi-signature custody' },
+          ', and the broader philosophy in ',
+          { to: '/insights/custody-foundation-of-trust', text: 'custody as the foundation of trust' },
+          '.',
+        ],
+      },
+      { h: 'Benefits of Institutional Crypto Asset Management' },
+      'The central benefit of institutional crypto asset management is that it allows exposure to a new asset class without inheriting the operational and security failures that have characterised much of its history. It converts a fragile, self-directed activity into a governed, controlled and evidenced one.',
+      'Specific benefits typically include: professional portfolio construction that sizes exposure to a defined risk budget; an independent risk function that enforces limits through volatility; institutional-grade custody that removes single points of failure; compliance and reporting infrastructure that satisfies auditors, boards and regulators; and access to research and due diligence that individual investors rarely have the resources to conduct. For a fiduciary, the ability to demonstrate a sound process — not merely a favourable outcome — is itself a material benefit.',
+      'There is also an operational dividend that is easy to overlook. Managing digital assets directly imposes a permanent burden: securing private keys, monitoring counterparties, reconciling on-chain and off-chain records, and keeping pace with a fast-moving regulatory and technical landscape. Delegating that burden to a specialist with dedicated infrastructure frees an allocator to focus on the decisions that actually add value — the size and role of the allocation — while the operational machinery is run to an institutional standard. In an asset class where operational failure, rather than market movement, has historically caused the largest losses, that dividend is substantive rather than cosmetic.',
+      'It is important to be precise about what institutional management does and does not offer. It does not remove volatility, guarantee returns, or eliminate risk; no responsible manager claims otherwise. What it offers is that the volatility is budgeted, the risk is controlled, and the assets are protected — so that the allocation can be held through a full cycle rather than abandoned at the point of maximum stress.',
+      { h: 'Institutional vs Retail Crypto Investing' },
+      'The difference between institutional and retail crypto investing is structural, not a matter of scale. Retail investing is typically a self-directed transaction: an individual buys an asset on an exchange, holds it in a personal or exchange wallet, and bears sole responsibility for security, timing and record-keeping. Institutional management is a governed process with independent controls, professional custody and defined accountability.',
+      {
+        p: [
+          'The practical differences run across custody, risk, execution and governance:',
+        ],
+      },
+      'On custody, retail investors typically rely on an exchange or a single personal wallet — a single point of failure — whereas institutions use qualified custodians with distributed key management. On risk, retail positions are often sized by conviction or capital available, whereas institutional positions are sized by risk contribution within enforced limits. On execution, retail trades on a single venue, whereas institutions diversify venues and apply best-execution and counterparty controls. On governance, a retail investor answers only to themselves, whereas an institutional manager operates under fiduciary duty, segregation of duties and independent oversight.',
+      'The result is that two investors can hold the same asset and be running entirely different risks. The asset is identical; the way it is owned, controlled and governed is not.',
+      { h: 'Common Challenges' },
+      'Institutional crypto asset management is not without genuine challenges, and a credible manager is candid about them. Acknowledging these constraints is part of the discipline; pretending they do not exist is a warning sign.',
+      { h3: 'Volatility and drawdown' },
+      'Digital assets exhibit volatility and drawdowns well beyond those of most traditional asset classes. This is a parameter to be budgeted, not a flaw to be wished away, and it demands sizing and temperament that many investors underestimate until they are tested by a real drawdown.',
+      { h3: 'Regulatory evolution' },
+      {
+        p: [
+          'The regulatory perimeter around digital assets continues to develop and varies by jurisdiction, which affects eligible assets, custody arrangements and reporting. Institutions serving clients across markets such as the UAE and Singapore must manage a moving and multi-jurisdictional framework. We track this in our note on the ',
+          { to: '/insights/regulatory-perimeter-2026', text: 'regulatory perimeter' },
+          '.',
+        ],
+      },
+      { h3: 'Operational and counterparty risk' },
+      'The infrastructure — exchanges, custodians, protocols and lending counterparties — is younger than its traditional equivalents, and its failures have been consequential. Rigorous, ongoing counterparty due diligence is therefore a permanent operational requirement rather than a one-time onboarding step.',
+      { h: 'Who Should Consider Institutional Crypto Asset Management?' },
+      'Institutional crypto asset management is designed for qualified investors who want considered, controlled exposure to digital assets without assuming the operational burden and security risk of managing them directly. It is most relevant to family offices, high-net-worth individuals, and institutional investors — the audiences for whom governance, custody and fiduciary process are not optional.',
+      'It tends to suit investors who share a particular disposition: a long-horizon view, an acceptance that a small, well-sized allocation may play a diversifying role, and a preference for a demonstrable process over a speculative outcome. It is not suited to those seeking leverage, short-term trading gains, or guaranteed returns — expectations the asset class cannot responsibly satisfy.',
+      {
+        p: [
+          'For allocators weighing whether a measured allocation fits their mandate, the most useful next step is a conversation grounded in their specific objectives and constraints. Explore how the firm approaches this in ',
+          { to: '/firm', text: 'about NexusCapital' },
+          ' and our ',
+          { to: '/strategies', text: 'investment strategies' },
+          ', or ',
+          { to: '/contact', text: 'request a confidential portfolio consultation' },
+          '.',
+        ],
+      },
+      { h: 'Conclusion' },
+      'Institutional crypto asset management is not a new way to speculate on cryptocurrency; it is the application of established institutional discipline — allocation, construction, risk management and custody — to a newer and more volatile asset class. Its purpose is to make exposure survivable and governable, so that the decision to hold digital assets is an allocation decision made on the same terms as any other.',
+      'For the institutions and families weighing the asset class, the durable advantage will not belong to those who timed an entry, but to those who built a repeatable, well-controlled process for owning it through a full cycle. That process — not any single trade — is what institutional crypto asset management provides.',
+      { h: 'Risk Disclaimer' },
+      'This article is provided for informational and educational purposes only and does not constitute investment, legal, tax or financial advice, nor an offer or solicitation to buy or sell any asset. Digital assets are highly volatile and speculative, and their value can fall as well as rise; you may lose some or all of your capital. Past performance is not indicative of future results, and no return is promised or guaranteed. Any examples are illustrative only. The regulatory treatment of digital assets varies by jurisdiction and continues to evolve. Prospective investors should conduct their own due diligence and seek independent professional advice appropriate to their circumstances before making any allocation.',
+    ],
+    faqs: [
+      {
+        q: 'What is institutional crypto asset management?',
+        a: 'Institutional crypto asset management is the professional management of digital assets on behalf of institutions, family offices and high-net-worth investors. It applies the same portfolio construction, risk management, compliance and custody disciplines used across traditional asset classes to cryptocurrencies — treating them as a governed, risk-budgeted allocation held through institutional-grade custody, rather than as a speculative trade.',
+      },
+      {
+        q: 'How is institutional crypto investing different from retail crypto investing?',
+        a: 'The difference is structural, not just scale. Retail investing is typically a self-directed transaction with a single point of failure for custody and positions sized by conviction. Institutional management is a governed process: positions are sized by risk contribution within enforced limits, assets are held by qualified custodians with distributed key management, execution is diversified and controlled, and the manager operates under fiduciary duty and independent oversight.',
+      },
+      {
+        q: 'How much should an institution allocate to digital assets?',
+        a: 'There is no universal figure. Allocations are sized by risk contribution rather than headline capital, and a first allocation is typically a low-single-digit percentage of total assets — enough to be meaningful, small enough that a severe drawdown does not threaten the broader portfolio. The right figure depends on the investor’s mandate, objectives and risk tolerance.',
+      },
+      {
+        q: 'What is crypto custody and why does it matter?',
+        a: 'Crypto custody is how digital assets are securely held and controlled on an investor’s behalf. Because blockchains remove the intermediaries that safeguard traditional assets, whoever controls the private keys effectively controls the asset. Institutional custody distributes signing authority — via multi-party computation or multi-signature — so that no single person, device or location can move client assets, supported by operational governance such as allow-lists and time-locks.',
+      },
+      {
+        q: 'How is risk managed in an institutional crypto portfolio?',
+        a: 'Through an independent risk framework of limits, monitoring and controls owned by a function separate from investment decision-making. It addresses market risk (via sizing, diversification and rebalancing), liquidity risk, counterparty risk, and risks specific to digital assets such as smart-contract and key-management risk. Each risk is identified and priced before capital is committed.',
+      },
+      {
+        q: 'Does institutional management remove the risk of crypto?',
+        a: 'No. It does not remove volatility, guarantee returns, or eliminate risk, and no responsible manager claims otherwise. What it offers is that volatility is budgeted, risk is controlled within defined limits, and assets are protected through institutional custody — so the allocation can be held through a full cycle rather than abandoned under stress.',
+      },
+      {
+        q: 'Why are institutional investors entering digital assets now?',
+        a: 'Because the infrastructure required to hold the asset class safely has matured: regulated custody, regulated market access including exchange-traded products in several jurisdictions, clearer accounting and audit practice, and a body of independent research. This allows allocators to assess digital assets on portfolio grounds — diversification, liquidity and asset properties — rather than on price speculation.',
+      },
+      {
+        q: 'Who is institutional crypto asset management for?',
+        a: 'It is designed for qualified investors seeking considered, controlled exposure without managing digital assets directly — principally family offices, high-net-worth individuals and institutional investors. It suits long-horizon investors who value a demonstrable process over a speculative outcome, and is not suited to those seeking leverage, short-term trading gains or guaranteed returns.',
+      },
+      {
+        q: 'What assets are included in an institutional digital asset portfolio?',
+        a: 'The eligible universe depends on the mandate. A conservative mandate may confine itself to the largest, most liquid assets and regulated vehicles; a broader mandate may include a considered sleeve of network and infrastructure tokens, each admitted only after independent due diligence. Diversification is applied across assets, sectors and access vehicles.',
+      },
+      {
+        q: 'What are the main challenges of institutional crypto asset management?',
+        a: 'The principal challenges are the asset class’s high volatility and drawdowns, an evolving and multi-jurisdictional regulatory perimeter, and operational and counterparty risk across a younger infrastructure of exchanges, custodians and protocols. A credible manager is candid about these constraints and builds controls around them rather than downplaying them.',
+      },
+      {
+        q: 'How are digital asset holdings reported to clients?',
+        a: 'Holdings and performance are reported transparently on a defined cadence, and in a well-run arrangement clients can see their holdings, addresses and movements at all times. Transparency is treated as part of custody itself — trust is evidenced through reporting rather than merely asserted.',
+      },
+      {
+        q: 'Is institutional crypto asset management regulated?',
+        a: 'The regulatory treatment of digital assets and their management varies by jurisdiction and continues to evolve, affecting eligible assets, custody and reporting. Institutions serving clients across markets such as the UAE and Singapore operate within these frameworks and adapt as they develop. This article is educational only and is not legal or regulatory advice.',
+      },
+    ],
+  },
+  {
     id: 'institutional-allocation-2026',
     related: ['bitcoin-treasury-reserve', 'position-sizing-drawdown-control'],
     category: 'Market Outlook',
