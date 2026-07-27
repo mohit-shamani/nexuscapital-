@@ -7,6 +7,8 @@
 //   - { h: '…' }                  → H2 sub-heading
 //   - { h3: '…' }                 → H3 sub-heading (optional, future articles)
 //   - { p: [ …segments… ] }       → paragraph with inline links/markers
+//   - { ul: [ item, … ] }         → bulleted list; an item is a string or an
+//                                   array of segments (same shape as `p`)
 // A segment is a string, { to, text }, { href, text } or { source }.
 
 const WORDS_PER_MINUTE = 200;
@@ -55,7 +57,15 @@ export function extractHeadings(content = []) {
   return headings;
 }
 
-/** Flatten article content to plain text (headings + paragraph copy). */
+/** Flatten a segment array ({ p } / list item) to plain text. */
+function segmentsToText(segments, parts) {
+  for (const seg of segments) {
+    if (typeof seg === 'string') parts.push(seg);
+    else if (seg && typeof seg.text === 'string') parts.push(seg.text);
+  }
+}
+
+/** Flatten article content to plain text (headings + paragraph + list copy). */
 export function getPlainText(content = []) {
   const parts = [];
   for (const block of content) {
@@ -65,9 +75,11 @@ export function getPlainText(content = []) {
       if (typeof block.h === 'string') parts.push(block.h);
       else if (typeof block.h3 === 'string') parts.push(block.h3);
       else if (Array.isArray(block.p)) {
-        for (const seg of block.p) {
-          if (typeof seg === 'string') parts.push(seg);
-          else if (seg && typeof seg.text === 'string') parts.push(seg.text);
+        segmentsToText(block.p, parts);
+      } else if (Array.isArray(block.ul)) {
+        for (const item of block.ul) {
+          if (typeof item === 'string') parts.push(item);
+          else if (Array.isArray(item)) segmentsToText(item, parts);
         }
       }
     }

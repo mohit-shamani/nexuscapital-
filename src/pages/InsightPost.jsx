@@ -121,6 +121,23 @@ export default function InsightPost() {
         </h3>
       );
     }
+    // Bulleted list — an item is a plain string or an array of segments.
+    if (block.ul) {
+      return (
+        <ul className="space-y-3 pl-1">
+          {block.ul.map((item, j) => (
+            <li key={j} className="flex gap-4 text-lg leading-relaxed text-slatey">
+              <span aria-hidden className="mt-[0.7em] h-px w-4 shrink-0 bg-brass/60" />
+              <span>
+                {typeof item === 'string'
+                  ? item
+                  : item.map((seg, k) => renderSegment(seg, k))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
     // Paragraph carrying inline links and/or source markers.
     return (
       <p className="text-lg leading-relaxed text-slatey">
@@ -170,6 +187,13 @@ export default function InsightPost() {
             <span className="text-ink">{post.author}</span>
             <span className="h-1 w-1 rounded-full bg-slatey/50" />
             <span>{formatDate(post.date)}</span>
+            {/* Freshness signal — only for articles that have been revised */}
+            {post.updated && post.updated !== post.date && (
+              <>
+                <span className="h-1 w-1 rounded-full bg-slatey/50" />
+                <span>Updated {formatDate(post.updated)}</span>
+              </>
+            )}
             <span className="h-1 w-1 rounded-full bg-slatey/50" />
             <span>{readingMinutes} min read</span>
           </div>
