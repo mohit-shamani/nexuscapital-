@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { fadeUp, EASE_EXPO } from '../../lib/motion.js';
 
 /**
@@ -46,25 +46,26 @@ function PostFaqItem({ item, isOpen, onToggle, index }) {
         </button>
       </h3>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={panelId}
-            role="region"
-            aria-labelledby={buttonId}
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: EASE_EXPO }}
-            className="overflow-hidden"
-          >
-            <p className="max-w-2xl pb-7 pr-8 text-base leading-relaxed text-slatey">
-              {item.a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/*
+        The answer stays mounted and is collapsed to zero height rather than
+        unmounted, so every answer exists in the rendered DOM. That keeps the
+        page consistent with the FAQPage structured data emitted in the article
+        graph, and lets crawlers and answer engines read all answers, not just
+        the one that happens to be open. Visually identical to unmounting.
+      */}
+      <motion.div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.5, ease: EASE_EXPO }}
+        className="overflow-hidden"
+      >
+        <p className="max-w-2xl pb-7 pr-8 text-base leading-relaxed text-slatey">
+          {item.a}
+        </p>
+      </motion.div>
     </motion.div>
   );
 }
