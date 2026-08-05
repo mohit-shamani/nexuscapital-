@@ -63,10 +63,10 @@ for (const slug of Object.keys(legalPages)) {
   staticRoutes.push({ path: `/${slug}`, title: page.title, description: page.intro });
 }
 
-// Insight articles mirror <Seo title={post.title} description={post.excerpt} />.
+// Insight articles mirror <Seo title={post.seoTitle || post.title} … />.
 const articleRoutes = insights.map((post) => ({
   path: `/insights/${post.id}`,
-  title: post.title,
+  title: post.seoTitle || post.title,
   description: post.excerpt,
   article: post,
 }));
