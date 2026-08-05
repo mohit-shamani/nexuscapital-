@@ -114,7 +114,12 @@ export const insights = [
             href: 'https://www.chainalysis.com/blog/',
             text: 'blockchain analytics providers',
           },
-          ' now supply the transaction-monitoring and compliance tooling that allows managers to screen counterparties and demonstrate the provenance of assets — a capability with no direct analogue in traditional markets. Each risk is identified, priced and, where possible, mitigated before capital is committed, on the principle that an unpriced risk is an uncontrolled one.',
+          ' now supply the transaction-monitoring and compliance tooling that allows managers to screen counterparties and demonstrate the provenance of assets — a capability with no direct analogue in traditional markets. Each risk is identified, priced and, where possible, mitigated before capital is committed, on the principle that an unpriced risk is an uncontrolled one. We set out the full framework — taxonomy, limits, stress testing and escalation — in our note on ',
+          {
+            to: '/insights/institutional-crypto-risk-management',
+            text: 'institutional crypto risk management',
+          },
+          '.',
         ],
       },
       { h: 'Governance and Operational Controls' },
@@ -280,6 +285,303 @@ export const insights = [
       {
         q: 'Is institutional crypto asset management regulated?',
         a: 'The regulatory treatment of digital assets and their management varies by jurisdiction and continues to evolve, affecting eligible assets, custody and reporting. Institutions serving clients across markets such as the UAE and Singapore operate within these frameworks and adapt as they develop. This article is educational only and is not legal or regulatory advice.',
+      },
+    ],
+  },
+  {
+    id: 'institutional-crypto-risk-management',
+    related: [
+      'position-sizing-drawdown-control',
+      'institutional-crypto-asset-management',
+      'custody-foundation-of-trust',
+    ],
+    category: 'Risk Management',
+    title: 'Institutional Crypto Risk Management: A Framework for Long-Term Capital Preservation',
+    // Shorter <title> for search results; the H1 keeps the full headline.
+    seoTitle: 'Institutional Crypto Risk Management Framework',
+    excerpt:
+      'A framework for institutional crypto risk management — how allocators govern market, liquidity, custody, counterparty and regulatory risk to preserve capital.',
+    tags: [
+      'institutional crypto risk management',
+      'digital asset risk management',
+      'capital preservation',
+      'position sizing',
+      'crypto portfolio management',
+      'institutional investing',
+    ],
+    definition: {
+      term: 'institutional crypto risk management',
+      question: 'What is institutional crypto risk management?',
+      text: 'Institutional crypto risk management is the independent system of limits, monitoring and controls that keeps a digital asset portfolio within its mandate as conditions change. It governs market, liquidity, custody, counterparty, regulatory and protocol risk through a single framework, and is owned by a function separate from the one making investment decisions so that limits cannot be relaxed to accommodate a position.',
+    },
+    date: '2026-08-05',
+    readingTime: '16 min',
+    author: 'Julian Reyes, Head of Risk',
+    content: [
+      {
+        p: [
+          'Digital assets have not introduced new categories of financial risk so much as compressed familiar ones into shorter timeframes and stripped away the intermediaries that traditionally absorbed them. Volatility arrives faster, settlement is irreversible, and the infrastructure holding the asset is younger than the asset class it serves. For an allocator, none of this is disqualifying. It does mean that the risk framework, rather than the investment thesis, determines whether an allocation survives long enough to express that thesis.',
+        ],
+      },
+      'This note sets out how institutional crypto risk management works in practice: the risks that matter, the principles that govern portfolio construction and sizing, and the monitoring that holds the whole structure together. It is written for allocators who already operate risk frameworks in traditional markets and want to understand what transfers directly, what requires adaptation, and what has no precedent at all.',
+      { h: 'Executive Summary' },
+      'Risk management in digital assets is not a constraint applied after the investment decision. It is the discipline that makes the investment decision defensible in the first place — and, in an asset class where operational failure has destroyed more capital than market movement, it is where most of the value is added.',
+      'The framework set out below rests on six propositions:',
+      {
+        ul: [
+          'The first objective is survival, not return. A portfolio that is impaired cannot compound, and the arithmetic of recovery is unforgiving.',
+          'Risk is budgeted, not avoided. Exposure is sized by the risk it contributes to the total portfolio rather than by the capital it absorbs.',
+          'Risk categories are governed as one system. Market, liquidity, custody, counterparty, regulatory and protocol risk interact, and are frequently correlated in stress.',
+          'Operational risk deserves equal standing with market risk. In this asset class it has been the more consequential of the two.',
+          'The risk function is independent. Limits that can be relaxed by the people they constrain are not limits.',
+          'Responses are pre-committed. The worst moment to decide how much loss is tolerable is during the loss.',
+        ],
+      },
+      { h: 'Why Risk Management Matters' },
+      'The case for a formal risk framework in digital assets rests on two observations: that losses in this asset class compound faster than gains, and that the largest historical losses have not come from being wrong about direction.',
+      { h3: 'The asymmetry of loss' },
+      'The mathematics of drawdown is indifferent to conviction. A portfolio that falls by half must double to return to its starting point; a fall of eighty per cent requires a fivefold gain. Because the recovery required grows faster than the loss sustained, capital preservation is not a defensive posture set against growth — it is the mechanism by which growth remains available. An allocation that is never impaired beyond its tolerance retains the ability to compound; one that is impaired severely may not recover within the horizon of the mandate, regardless of how sound the original thesis proves to be.',
+      'This asymmetry is more consequential in digital assets than in most traditional allocations, because the distribution of outcomes is wider and drawdowns are both deeper and faster. The practical implication is not that the asset class should be avoided, but that position sizes which would be unremarkable in equities can be inappropriate here, and that the sizing decision carries more weight than the selection decision.',
+      { h3: 'Risk management as a precondition' },
+      {
+        p: [
+          'For a fiduciary, there is a second argument that has nothing to do with arithmetic. A trustee, investment committee or auditor assessing an allocation is evaluating a process, not an outcome. The ability to demonstrate that risks were identified, priced, limited and monitored is what distinguishes a considered allocation from a speculative one — and it is a standard that ',
+          {
+            href: 'https://rpc.cfainstitute.org/',
+            text: 'professional investment standards bodies',
+          },
+          ' have long applied to every other asset class. Approached this way, risk management is not the price of participating in digital assets. It is the precondition that makes participation defensible at all, and it sits at the centre of ',
+          {
+            to: '/insights/institutional-crypto-asset-management',
+            text: 'institutional crypto asset management',
+          },
+          ' as a discipline.',
+        ],
+      },
+      { h: 'Key Risks in Digital Assets' },
+      'A risk framework begins with a taxonomy, because risks that are not named are not measured. Digital assets carry the familiar categories found in any portfolio, alongside several that traditional frameworks do not anticipate:',
+      {
+        ul: [
+          'Market risk — the volatility and drawdown characteristic of the asset class, including the tendency for correlations across digital assets to converge toward one in stress.',
+          'Liquidity risk — the risk that a position cannot be exited at a reasonable price in disorderly conditions, distinct from whether it trades comfortably in calm ones.',
+          'Custody and key-management risk — the risk of loss or unauthorised transfer arising from how private keys are generated, stored and used. This risk has no analogue in traditional custody.',
+          'Counterparty risk — exposure to exchanges, custodians, brokers and lending counterparties, several of which have failed in ways that impaired client assets directly.',
+          'Regulatory risk — the risk that a change in the perimeter alters which assets, venues or structures remain eligible for a given mandate.',
+          'Protocol and smart-contract risk — the risk that the code governing an asset or position behaves other than as intended, or is exploited.',
+          'Operational risk — the reconciliation, process and personnel failures that sit beneath all of the above and are the most common proximate cause of loss.',
+        ],
+      },
+      'Two features of this taxonomy deserve emphasis. First, these categories are not independent: a venue failure is simultaneously a counterparty event, a liquidity event and an operational one, and stress tends to arrive in all three at once. Second, the risks that have historically destroyed the most institutional capital in this asset class are not the market risks that dominate investment committee discussion, but the custody, counterparty and operational risks that are easier to overlook because they generate no daily price series.',
+      { h: 'Portfolio Construction Principles' },
+      'Portfolio construction is where the risk framework becomes concrete. The objective is a portfolio that expresses the intended exposure while remaining inside its risk budget through a full cycle — including the parts of the cycle that are unpleasant.',
+      { h3: 'Role before size' },
+      {
+        p: [
+          'No position is sized before its role is defined. An allocation intended as a long-horizon diversifier is constructed differently from one intended as a thematic position or a treasury reserve, and conflating the two produces a portfolio that satisfies neither objective. This is the discipline set out in our note on the ',
+          {
+            to: '/insights/institutional-allocation-2026',
+            text: 'institutional allocation to digital assets',
+          },
+          ': the question is not whether to hold the asset class, but what job the holding is being asked to do.',
+        ],
+      },
+      { h3: 'Diversification that genuinely diversifies' },
+      {
+        p: [
+          'Diversification within digital assets is weaker than position counts suggest, because correlations across the asset class rise sharply in stress — precisely when the benefit is required. Holding many tokens is not, on its own, diversification. More meaningful separation comes from diversifying across the dimensions that actually differ: access vehicle, custody arrangement, trading venue, and the underlying economic driver of the position. A holding in a major asset, an on-chain yield position and an allocation to ',
+          {
+            to: '/insights/tokenization-real-world-assets',
+            text: 'tokenized real-world assets',
+          },
+          ' carry genuinely different risk profiles; three network tokens in the same sector largely do not.',
+        ],
+      },
+      { h3: 'Rebalancing on a rule' },
+      'Because volatility causes weights to drift quickly, a portfolio left unrebalanced becomes a different portfolio within months — usually one carrying more risk than the mandate permits, since the position that has appreciated most is typically the one that has grown most volatile. Rebalancing is therefore governed by rule rather than judgement: a defined tolerance band, a defined review cadence, and an action that follows automatically when the band is breached. The purpose of the rule is not that it produces better decisions in any single instance, but that it removes discretion at the moments when discretion is least reliable.',
+      { h: 'Position Sizing' },
+      'Position sizing is the single most consequential control in a digital asset portfolio, and the one most often applied loosely. The governing principle is that positions are sized by the risk they contribute, not by the capital they absorb.',
+      'The distinction matters because digital assets carry high standalone volatility. A capital weight that appears modest can contribute a disproportionate share of total portfolio risk — the allocation may look small on a statement while dominating the portfolio’s behaviour in a drawdown. Sizing to risk contribution corrects for this: the manager determines how much risk the allocation should contribute to the total portfolio and derives the capital weight from there, rather than the other way round. In most institutional mandates this produces a low-single-digit percentage of total assets for a first allocation.',
+      'Two refinements follow. The first is volatility targeting: because the volatility of digital assets shifts materially across regimes, a fixed capital weight delivers inconsistent risk over time, so positions are trimmed as an asset becomes more volatile and may grow as it calms. The second is the constitutional position limit — a ceiling on the risk any single asset may contribute, which binds regardless of conviction. Such a limit is most restrictive exactly when conviction is highest, which is when it is most needed.',
+      {
+        p: [
+          'The underlying test is survivability rather than optimality. The relevant question is not what allocation would have been optimal in hindsight, but what allocation can be held through a severe drawdown without forcing a sale or breaching a mandate. We examine this discipline in detail in our note on ',
+          {
+            to: '/insights/position-sizing-drawdown-control',
+            text: 'sizing positions for survival and drawdown control',
+          },
+          '.',
+        ],
+      },
+      { h: 'Liquidity Risk' },
+      'Liquidity risk in digital assets is systematically underestimated, because the asset class presents well under normal conditions. Major assets trade continuously across many venues with visible depth, which creates an impression of liquidity that does not always survive contact with stress.',
+      'A rigorous framework assesses liquidity in the conditions that matter rather than the conditions that prevail. Depth is measured on approved venues at realistic size, not headline volume across the market as a whole, since aggregate figures include venues a mandate would never use. Positions are assessed against the time required to exit without disproportionate market impact, and that assessment is made under stressed assumptions — thinner books, wider spreads, correlated selling.',
+      {
+        p: [
+          'Liquidity risk also arises from structure rather than market conditions. Staking lock-ups and unbonding periods, redemption windows on wrapped or tokenized instruments, and positions in ',
+          { to: '/insights/reading-onchain-yield', text: 'on-chain yield strategies' },
+          ' can each impose delays that are irrelevant in calm markets and decisive in disorderly ones. These constraints are catalogued at the point of investment rather than discovered at the point of exit, and are matched against the mandate’s own liquidity obligations. A position whose exit period exceeds the horizon over which the portfolio may need the capital is a mismatch regardless of how attractive its return profile appears.',
+        ],
+      },
+      { h: 'Custody Risk' },
+      'Custody risk is the category with the least traditional precedent and, historically, the greatest consequence. Because blockchains remove the intermediaries that safeguard traditional assets, control of the private key is functionally equivalent to ownership of the asset, and a transfer once settled cannot be recalled.',
+      {
+        p: [
+          'The controlling principle is that no single person, device or location should be able to move client assets. Distributed key management delivers this cryptographically: multi-signature arrangements require a quorum of independent keys to authorise a transfer, while ',
+          {
+            href: 'https://csrc.nist.gov/projects/threshold-cryptography',
+            text: 'multi-party computation',
+          },
+          ' never assembles a complete key at all, producing signatures from distributed shares. We set out the mechanics of both in our note on ',
+          { to: '/insights/mpc-multisig-custody', text: 'MPC and multi-signature custody' },
+          '.',
+        ],
+      },
+      {
+        p: [
+          'The cryptography, however, is necessary rather than sufficient. A signing quorum whose members all report to the same individual is a quorum in form only. What makes custody institutional is the governance around it: signers drawn from separate functions, withdrawal allow-lists constraining destinations, time-locks on large transfers, independent reconciliation between on-chain records and internal books, and formal change control over access rights. Legal segregation of client assets sits alongside these controls, so that a failure of the custodian is not a claim on the client. This is the argument we develop at length in ',
+          {
+            to: '/insights/custody-foundation-of-trust',
+            text: 'custody as the foundation of trust',
+          },
+          '.',
+        ],
+      },
+      { h: 'Counterparty Risk' },
+      {
+        p: [
+          'Counterparty risk in digital assets differs from its traditional equivalent in an important respect: the institutions concerned are younger, in several cases less supervised, and their failures have tended to impair client assets directly rather than through a chain of contagion. The ',
+          {
+            href: 'https://www.coindesk.com/learn/what-happened-to-ftx-the-fall-of-a-crypto-giant/',
+            text: 'commingling of client funds at failed exchanges',
+          },
+          ' demonstrated that assets held at a venue can be lost without the market moving at all.',
+        ],
+      },
+      'The framework that follows from this is deliberately conservative. Counterparties are assessed before use against licensing and regulatory standing, the segregation of client assets, ownership and financial condition, audit history, and behaviour during previous periods of stress. Approved counterparties are then used in combination rather than exclusively, so that no single failure is capable of causing disproportionate loss. Exposure to any one venue is capped, and balances are swept to custody rather than left resting on a trading platform — a venue is treated as a place to transact, not a place to hold.',
+      'Diligence is continuous rather than a one-time onboarding exercise. Counterparties are re-reviewed on a defined cycle and on trigger events: a change of ownership or senior management, a regulatory action, a withdrawal disruption, or any material deterioration in publicly available information. Lending and yield-bearing arrangements receive particular scrutiny, since they convert a custody relationship into a credit exposure — a distinction that is easy to lose sight of when the position is described in terms of its yield.',
+      { h: 'Regulatory Risk' },
+      {
+        p: [
+          'Regulatory risk in digital assets is best understood as eligibility risk. The central question for an allocator is not whether the asset class is permitted, but whether a change in the perimeter could render a specific asset, venue or structure unsuitable for the mandate — and how costly it would be to unwind that position if so. Frameworks such as ',
+          {
+            href: 'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica',
+            text: 'the European Union’s Markets in Crypto-Assets Regulation',
+          },
+          ' have established licensing, custody and disclosure obligations that institutions recognise from other markets, and other jurisdictions have advanced along broadly consistent lines.',
+        ],
+      },
+      {
+        p: [
+          'For institutions operating across several jurisdictions, the practical burden is that the applicable requirements differ and continue to develop. The response is to treat regulatory monitoring as a standing function rather than a periodic review, to maintain records to a standard that will satisfy the most demanding regime a mandate touches rather than the least, and to build to the spirit of the rules — transparency, segregation, accountability — rather than to the letter of any single regime that may yet evolve. We map the current landscape in our note on the ',
+          {
+            to: '/insights/regulatory-perimeter-2026',
+            text: 'regulatory perimeter for digital assets',
+          },
+          '. Nothing in this section constitutes legal advice, and jurisdiction-specific questions should be directed to qualified counsel.',
+        ],
+      },
+      { h: 'Risk Monitoring Framework' },
+      'A risk framework that is not monitored is a document rather than a control. Monitoring converts the framework into something that acts, and its design determines whether limits are observed in practice or only in principle.',
+      { h3: 'What is measured' },
+      'Monitoring covers exposure and limit utilisation by asset, sector and access vehicle; realised and forward-looking volatility, and the risk contribution of each position to the portfolio total; drawdown against pre-defined thresholds; liquidity coverage under stressed assumptions; concentration by venue, custodian and counterparty; and the operational indicators — reconciliation breaks, failed transfers, access changes — that tend to precede operational losses. Stress testing sits alongside this: portfolios are examined against severe but plausible scenarios, including simultaneous drawdown, correlation convergence and the failure of a significant counterparty.',
+      { h3: 'Escalation and pre-committed responses' },
+      'The mechanism that gives monitoring effect is pre-commitment. Thresholds and the responses to them are defined in advance, in writing, when judgement is unclouded — which limits require notification, which require reduction, and which require a position to be closed. When a threshold is reached, the response follows the rule rather than the debate. Breaches are documented and reported to the investment committee whether or not they are subsequently cured, because a framework that quietly absorbs its own exceptions ceases to be a framework.',
+      'Independence is what makes this durable. The risk function reports separately from the investment function, and cannot have its limits amended by the people those limits constrain. Segregation of duties extends the same principle to operations: those who decide on a transaction are not those who settle it, and neither can move assets alone.',
+      { h: 'Common Institutional Practices' },
+      'Across credible institutional mandates, a consistent set of practices recurs. None is novel; their value lies in being applied without exception:',
+      {
+        ul: [
+          'A written investment policy defining objectives, eligible assets, limits and the process for amending them.',
+          'Position sizing by risk contribution, subject to a hard ceiling on any single asset.',
+          'Rule-based rebalancing within defined tolerance bands, on a fixed cadence.',
+          'Qualified custody with distributed key management, legal segregation of client assets and independently reviewed controls.',
+          'Multi-venue execution with capped exposure per venue and balances swept to custody rather than held on exchange.',
+          'Counterparty due diligence at onboarding and on a defined re-review cycle, with trigger-based interim reviews.',
+          'Stress testing against severe but plausible scenarios, including correlated drawdown and counterparty failure.',
+          'Pre-committed drawdown thresholds with documented, automatic responses.',
+          'Independent reconciliation between on-chain records, venue balances and internal books.',
+          'Transparent client reporting on a defined cadence, prepared to an audit standard.',
+        ],
+      },
+      {
+        p: [
+          'The same discipline extends to how return is underwritten. Yield-bearing positions are assessed on the source of the return and the risks accepted to obtain it rather than on the headline rate, a framework we set out in our notes on ',
+          { to: '/insights/reading-onchain-yield', text: 'reading risk in on-chain yield' },
+          ' and ',
+          {
+            to: '/insights/sustainable-protocol-yield',
+            text: 'sustainable staking and protocol economics',
+          },
+          '.',
+        ],
+      },
+      { h: 'Key Takeaways' },
+      {
+        ul: [
+          'Capital preservation is not the opposite of growth; it is the condition that keeps growth available, because the arithmetic of recovery is asymmetric.',
+          'Size by risk contribution rather than capital weight, and treat position limits as constitutional rather than discretionary.',
+          'Assess liquidity under stressed assumptions, and catalogue structural lock-ups before investing rather than at exit.',
+          'Custody and counterparty risk have destroyed more institutional capital in this asset class than adverse price movement.',
+          'Diversification within digital assets is weaker than position counts imply; separate by vehicle, venue, custody and economic driver.',
+          'Regulatory risk is principally eligibility risk — the question is what a change in the perimeter would require you to unwind.',
+          'A risk function that can be overruled by the investment function is not independent, and its limits are not limits.',
+          'Pre-commit responses to drawdown thresholds while judgement is clear, and document breaches whether or not they are cured.',
+        ],
+      },
+      {
+        p: [
+          'For allocators considering how a risk-first framework would apply to their own mandate, the useful next step is a conversation grounded in specific objectives and constraints. Explore our ',
+          { to: '/strategies', text: 'investment strategies' },
+          ' and ',
+          { to: '/expertise', text: 'risk and governance expertise' },
+          ', or ',
+          { to: '/contact', text: 'book a confidential portfolio review' },
+          '.',
+        ],
+      },
+      { h: 'Risk Disclaimer' },
+      'This article is provided for informational and educational purposes only and does not constitute investment, legal, tax or financial advice, nor an offer or solicitation to buy or sell any asset. Digital assets are highly volatile and speculative, and their value can fall as well as rise; you may lose some or all of your capital. Risk management techniques reduce neither volatility nor the possibility of loss, and no framework can eliminate risk or assure capital preservation. Past performance is not indicative of future results, and no return is promised or guaranteed. Any examples are illustrative only. The regulatory treatment of digital assets varies by jurisdiction and continues to evolve. Prospective investors should conduct their own due diligence and seek independent professional advice appropriate to their circumstances before making any allocation.',
+    ],
+    faqs: [
+      {
+        q: 'What is institutional crypto risk management?',
+        a: 'It is the independent system of limits, monitoring and controls that keeps a digital asset portfolio within its mandate as conditions change. It governs market, liquidity, custody, counterparty, regulatory and protocol risk through a single framework, and is owned by a function separate from the one making investment decisions so that limits cannot be relaxed to accommodate a position.',
+      },
+      {
+        q: 'Why is risk management especially important in digital assets?',
+        a: 'Because losses compound faster than gains and the largest historical losses have not come from being wrong about direction. A portfolio that falls by half must double to recover, and in this asset class the deepest impairments have generally originated in custody, counterparty and operational failures rather than in market movement.',
+      },
+      {
+        q: 'What are the main risks in an institutional crypto portfolio?',
+        a: 'Market risk, liquidity risk, custody and key-management risk, counterparty risk, regulatory risk, protocol and smart-contract risk, and the operational risk beneath all of them. These categories are not independent — a venue failure is simultaneously a counterparty, liquidity and operational event, and stress tends to arrive in several at once.',
+      },
+      {
+        q: 'How are positions sized in a digital asset portfolio?',
+        a: 'By the risk a position contributes to the total portfolio rather than the capital it absorbs. Because digital assets carry high standalone volatility, a modest capital weight can contribute a disproportionate share of portfolio risk. In most institutional mandates this produces a low-single-digit percentage of total assets for a first allocation, subject to a hard ceiling on any single asset.',
+      },
+      {
+        q: 'How is liquidity risk assessed for digital assets?',
+        a: 'Under stressed conditions rather than prevailing ones. Depth is measured on approved venues at realistic size rather than from headline market-wide volume, positions are assessed against the time required to exit without disproportionate impact, and structural constraints such as staking lock-ups and redemption windows are catalogued at the point of investment rather than discovered at exit.',
+      },
+      {
+        q: 'How do institutions reduce custody risk?',
+        a: 'By ensuring no single person, device or location can move client assets. Multi-signature arrangements require a quorum of independent keys; multi-party computation never assembles a complete key at all. Around that sits governance: signers from separate functions, withdrawal allow-lists, time-locks on large transfers, independent reconciliation and legal segregation of client assets.',
+      },
+      {
+        q: 'How is counterparty risk managed?',
+        a: 'Counterparties are assessed before use against licensing, segregation of client assets, ownership, financial condition, audit history and behaviour in past stress. Approved counterparties are used in combination rather than exclusively, exposure to any one is capped, and balances are swept to custody rather than left on a venue. Diligence continues on a defined cycle and on trigger events.',
+      },
+      {
+        q: 'Does a risk framework prevent losses?',
+        a: 'No. It neither removes volatility nor assures capital preservation, and no responsible manager suggests otherwise. What a framework does is ensure risks are identified, sized, limited and monitored, so that losses occur within tolerances the mandate anticipated rather than in ways that impair the portfolio beyond recovery.',
+      },
+      {
+        q: 'What makes a risk function independent?',
+        a: 'It reports separately from the investment function and its limits cannot be amended by the people those limits constrain. Segregation of duties extends the principle to operations: those who decide on a transaction are not those who settle it, and neither can move assets alone. Limits that can be relaxed by the desk they govern are not limits.',
+      },
+      {
+        q: 'How often should an institutional crypto portfolio be reviewed?',
+        a: 'Exposure, limit utilisation and operational indicators are monitored continuously, while formal review follows a defined cadence set by the mandate. Rebalancing is governed by tolerance bands rather than judgement, and pre-committed drawdown thresholds trigger review irrespective of the scheduled cycle.',
       },
     ],
   },
@@ -649,7 +951,12 @@ export const insights = [
       },
       {
         p: [
-          'To see how risk-first management is built into every mandate, explore our ',
+          'Sizing is one control among several; the wider system of limits, monitoring and escalation it belongs to is set out in our note on ',
+          {
+            to: '/insights/institutional-crypto-risk-management',
+            text: 'building an institutional crypto risk framework',
+          },
+          '. To see how risk-first management is built into every mandate, explore our ',
           { to: '/strategies', text: 'portfolio strategies' },
           ' or ',
           { to: '/contact', text: 'book a portfolio review' },

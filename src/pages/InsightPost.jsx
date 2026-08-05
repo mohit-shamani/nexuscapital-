@@ -152,7 +152,9 @@ export default function InsightPost() {
       <ReadingProgress />
 
       <Seo
-        title={post.title}
+        /* `seoTitle` lets a long editorial headline keep its H1 while the
+           <title> stays inside the length search engines actually display. */
+        title={post.seoTitle || post.title}
         path={`/insights/${post.id}`}
         description={post.excerpt}
         type="article"
