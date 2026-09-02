@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { SITE, BASE_URL, DEFAULT_DESCRIPTION } from '../../lib/site.js';
+import { SITE, BASE_URL, DEFAULT_DESCRIPTION, OG_IMAGE } from '../../lib/site.js';
 
 /**
  * Per-page SEO metadata. Renders a unique <title>, meta description, canonical
@@ -28,7 +28,9 @@ export default function Seo({
     ? `${title} | ${SITE}`
     : `${SITE} | Institutional Crypto Asset Management & Digital Wealth`;
   const canonical = `${BASE_URL}${path}`;
-  const ogImage = image ? (image.startsWith('http') ? image : `${BASE_URL}${image}`) : null;
+  // Falls back to the site-wide share card so no route ships without a preview.
+  const shareImage = image || OG_IMAGE;
+  const ogImage = shareImage.startsWith('http') ? shareImage : `${BASE_URL}${shareImage}`;
 
   return (
     <Helmet>
@@ -43,7 +45,10 @@ export default function Seo({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonical} />
       <meta property="og:site_name" content={SITE} />
-      {ogImage && <meta property="og:image" content={ogImage} />}
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={`${SITE} — ${title || 'Institutional Crypto Asset Management'}`} />
 
       {/* Article-specific Open Graph (only for blog posts) */}
       {article && <meta property="article:published_time" content={article.date} />}
@@ -57,7 +62,7 @@ export default function Seo({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      {ogImage && <meta name="twitter:image" content={ogImage} />}
+      <meta name="twitter:image" content={ogImage} />
     </Helmet>
   );
 }

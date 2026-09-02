@@ -1,30 +1,50 @@
-// Build-time static HTML generation (post-`vite build`).
+// Build-time static prerendering (runs after `vite build`).
 //
-// This is a pure client-side React SPA, so the single built dist/index.html
-// ships the homepage's <title>/description/canonical for EVERY route. JS-less
-// crawlers therefore see all pages as duplicates of the homepage. To fix that
-// without server-side-rendering the WebGL/animation components (which reference
-// window/WebGL and are unsafe under react-dom/server), we generate one static
-// index.html per route here, each with its OWN <head>: unique title, meta
-// description, canonical, Open Graph / Twitter tags, and (for articles)
-// BlogPosting JSON-LD.
+// This is a client-rendered React SPA. Vite emits a single dist/index.html whose
+// body is nothing but <div id="root"></div>, so a crawler that does not execute
+// JavaScript sees an empty page on every route — no headings, no copy. That
+// includes GPTBot and the other AI crawlers robots.txt explicitly allows.
 //
-// On Vercel the generated dist/<route>/index.html files are served directly
-// (the filesystem is checked before vercel.json rewrites), and the existing
-// SPA-fallback rewrite only handles routes that were not prerendered. The React
-// app still boots and renders the full interactive page on the client.
+// This script fixes that in two passes:
+//
+//   PASS 1 — head. Write one dist/<route>/index.html per route, each with its
+//     own <title>, description, canonical, Open Graph / Twitter tags and JSON-LD.
+//     Schema comes from src/lib/schema.js, the same module the React app uses,
+//     so prerendered and client-rendered structured data cannot drift.
+//
+//   PASS 2 — body. Serve dist over localhost, load every route in headless
+//     Chrome, let the real app render, then write the resulting DOM into
+//     <div id="root">. A real browser is used rather than react-dom/server
+//     because the app renders WebGL (@react-three/fiber), Lenis smooth scroll
+//     and framer-motion — all of which touch window/WebGL and are unsafe under
+//     Node SSR. Snapshotting the real thing needs no application changes.
+//
+// PASS 2 is fail-soft: if Chrome cannot launch (a build image without one, say),
+// the script warns and leaves the PASS 1 output in place rather than failing the
+// deploy. The site degrades to head-only metadata — never to a broken build.
+//
+// On Vercel the generated dist/<route>/index.html files are served directly (the
+// filesystem is checked before vercel.json rewrites); the SPA-fallback rewrite
+// only handles routes that were not prerendered. main.jsx uses createRoot(), not
+// hydrateRoot(), so React replaces the prerendered DOM on boot — crawlers get
+// full HTML, users get paint before JS, and there is no hydration mismatch.
 
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
+import { createReadStream } from 'node:fs';
+import { createServer } from 'node:http';
+import { dirname, join, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { insights } from '../src/data/insights.js';
 import { legalPages } from '../src/data/legal.js';
-import { SITE, BASE_URL, DEFAULT_DESCRIPTION } from '../src/lib/site.js';
-import { articleGraph } from '../src/lib/schema.js';
+import { strategies } from '../src/data/strategies.js';
+import { expertiseAreas } from '../src/data/expertise.js';
+import { SITE, BASE_URL, DEFAULT_DESCRIPTION, OG_IMAGE } from '../src/lib/site.js';
+import { articleGraph, pageGraph } from '../src/lib/schema.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
+const PORT = 4178;
 
 // Compose the brand title exactly as src/components/utils/Seo.jsx does, so the
 // prerendered <head> matches what react-helmet-async renders on the client.
@@ -41,26 +61,30 @@ function escapeHtml(str) {
 }
 
 // --- Route → metadata -------------------------------------------------------
-// Static pages mirror the <Seo> props set inside each page component.
+// Static pages mirror the <Seo> props set inside each page component. `label`
+// feeds the BreadcrumbList; `services` feeds Service schema and is drawn from
+// the page's own visible content.
 const staticRoutes = [
-  { path: '/', title: null, description:
+  { path: '/', label: 'Home', title: null, description:
       'NexusCapital delivers institutional-grade crypto asset management for high-net-worth investors. Secure portfolio management, digital asset trading & wealth consulting. Book your portfolio review today.' },
-  { path: '/firm', title: 'About Us — Disciplined Digital Wealth Management', description:
+  { path: '/firm', label: 'About', title: 'About Us — Disciplined Digital Wealth Management', description:
       'NexusCapital is an independent, partner-owned asset manager bringing decades of institutional discipline, bank-grade security and full transparency to digital asset management.' },
-  { path: '/strategies', title: 'Strategies — Crypto Portfolio Management & Risk', description:
-      'Actively managed crypto portfolios, wealth preservation, alternative investments and risk-first management — institutional digital asset strategies built around your mandate.' },
-  { path: '/insights', title: 'Insights & Research — Digital Asset Market Analysis', description:
+  { path: '/strategies', label: 'Strategies', title: 'Strategies — Crypto Portfolio Management & Risk', description:
+      'Actively managed crypto portfolios, wealth preservation, alternative investments and risk-first management — institutional digital asset strategies built around your mandate.',
+    services: strategies },
+  { path: '/insights', label: 'Insights', title: 'Insights & Research — Digital Asset Market Analysis', description:
       'Institutional research and market outlook on crypto asset allocation, custody, on-chain yield, risk management and regulation from the NexusCapital investment team.' },
-  { path: '/expertise', title: 'Our Expertise — Digital Asset Custody & Research', description:
-      'From portfolio construction to bank-grade custody, NexusCapital applies institutional rigor to every stage of the digital-asset lifecycle — research, trading, security and governance.' },
-  { path: '/contact', title: 'Contact — Book a Portfolio Review', description:
+  { path: '/expertise', label: 'Our Expertise', title: 'Our Expertise — Digital Asset Custody & Research', description:
+      'From portfolio construction to bank-grade custody, NexusCapital applies institutional rigor to every stage of the digital-asset lifecycle — research, trading, security and governance.',
+    services: expertiseAreas },
+  { path: '/contact', label: 'Contact', title: 'Contact — Book a Portfolio Review', description:
       'Begin a confidential conversation with NexusCapital. Contact our institutional team to discuss your mandate and book a portfolio review. Email info@nexuscapital.in.' },
 ];
 
 // Legal stubs mirror <Seo title={page.title} description={page.intro} />.
 for (const slug of Object.keys(legalPages)) {
   const page = legalPages[slug];
-  staticRoutes.push({ path: `/${slug}`, title: page.title, description: page.intro });
+  staticRoutes.push({ path: `/${slug}`, label: page.title, title: page.title, description: page.intro });
 }
 
 // Insight articles mirror <Seo title={post.seoTitle || post.title} … />.
@@ -94,39 +118,41 @@ function buildHead(route) {
     `<meta name="twitter:description" content="${d}" />`,
   ];
 
+  // Share card on every route, so no shared link renders without a preview.
+  const raw = route.article?.image || OG_IMAGE;
+  const cardImage = raw.startsWith('http') ? raw : `${BASE_URL}${raw}`;
+  const alt = `${SITE} — ${route.title || 'Institutional Crypto Asset Management'}`;
+  tags.push(
+    `<meta property="og:image" content="${escapeHtml(cardImage)}" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="${escapeHtml(alt)}" />`,
+    `<meta name="twitter:image" content="${escapeHtml(cardImage)}" />`
+  );
+
   if (route.article) {
     const a = route.article;
-
-    // Article-specific Open Graph — mirrors src/components/utils/Seo.jsx.
     tags.push(
       `<meta property="article:published_time" content="${escapeHtml(a.date)}" />`,
       `<meta property="article:modified_time" content="${escapeHtml(a.updated || a.date)}" />`
     );
     if (a.category) tags.push(`<meta property="article:section" content="${escapeHtml(a.category)}" />`);
     if (a.author) tags.push(`<meta property="article:author" content="${escapeHtml(a.author)}" />`);
-    if (a.image) {
-      const img = a.image.startsWith('http') ? a.image : `${BASE_URL}${a.image}`;
-      tags.push(
-        `<meta property="og:image" content="${escapeHtml(img)}" />`,
-        `<meta name="twitter:image" content="${escapeHtml(img)}" />`
-      );
-    }
-
-    // Full, de-duplicated schema graph (Organization + Breadcrumb + Article +
-    // FAQ), generated by the SAME builder the client uses. Tagged so the client
-    // strips it on hydration (see ArticleJsonLd) — never duplicated.
-    const graph = articleGraph(a);
-    tags.push(
-      `<script type="application/ld+json" data-prerendered-jsonld>${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`
-    );
   }
+
+  // Structured data. Articles get the full BlogPosting graph; every other route
+  // gets Organization + WebSite + BreadcrumbList (+ Service where the page lists
+  // services). Tagged so the client strips it on hydration — never duplicated.
+  const graph = route.article
+    ? articleGraph(route.article)
+    : pageGraph({ path: route.path, label: route.label, services: route.services });
+  tags.push(
+    `<script type="application/ld+json" data-prerendered-jsonld>${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`
+  );
 
   return tags.join('\n    ');
 }
 
-// Replace the homepage head block (between the two markers in index.html) with
-// the route-specific tags. Markers are injected into index.html so this stays a
-// single, robust string replacement rather than brittle per-tag regexes.
 const START = '<!-- prerender:head:start -->';
 const END = '<!-- prerender:head:end -->';
 
@@ -141,24 +167,140 @@ function applyHead(template, route) {
   return `${before}\n    ${buildHead(route)}\n    ${after}`;
 }
 
+// '/' -> dist/index.html ; '/foo' -> dist/foo/index.html
+function outPathFor(routePath) {
+  return routePath === '/'
+    ? join(DIST, 'index.html')
+    : join(DIST, ...routePath.split('/').filter(Boolean), 'index.html');
+}
+
+// --- PASS 2 helpers ---------------------------------------------------------
+const MIME = {
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css',
+  '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp',
+  '.woff2': 'font/woff2', '.json': 'application/json', '.xml': 'application/xml', '.txt': 'text/plain',
+};
+
+/** Static server over dist that mirrors Vercel: filesystem first, SPA fallback. */
+function serveDist() {
+  const server = createServer(async (req, res) => {
+    const urlPath = decodeURIComponent(req.url.split('?')[0]);
+    const candidates = [join(DIST, urlPath), join(DIST, urlPath, 'index.html'), join(DIST, 'index.html')];
+    for (const file of candidates) {
+      try {
+        const s = await stat(file);
+        if (!s.isFile()) continue;
+        res.writeHead(200, { 'Content-Type': MIME[extname(file)] || 'application/octet-stream' });
+        createReadStream(file).pipe(res);
+        return;
+      } catch {
+        /* try the next candidate */
+      }
+    }
+    res.writeHead(404).end('not found');
+  });
+  return new Promise((resolve) => server.listen(PORT, () => resolve(server)));
+}
+
+/**
+ * Render one route in the browser and return the settled #root markup.
+ *
+ * The page is scrolled top to bottom first so framer-motion's `whileInView`
+ * animations fire; anything still mid-flight then has its inline opacity and
+ * transform neutralised. Without this the snapshot would contain text that is in
+ * the DOM but painted at opacity 0, or translated out of its overflow-hidden
+ * mask (RevealText starts every word at y:110%).
+ */
+async function snapshotRoute(page, routePath) {
+  await page.goto(`http://127.0.0.1:${PORT}${routePath}`, { waitUntil: 'networkidle0', timeout: 45000 });
+  await page.waitForSelector('#root h1', { timeout: 20000 }).catch(() => {});
+
+  await page.evaluate(async () => {
+    // Drive the whole page through the viewport to trigger in-view animations.
+    const step = Math.round(window.innerHeight * 0.6);
+    const limit = document.body.scrollHeight + window.innerHeight;
+    for (let y = 0; y < limit; y += step) {
+      window.scrollTo(0, y);
+      document.documentElement.scrollTop = y;
+      await new Promise((r) => setTimeout(r, 60));
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    await new Promise((r) => setTimeout(r, 400));
+  });
+
+  return page.evaluate(() => {
+    // Settle anything framer-motion left part-way through.
+    document.querySelectorAll('#root [style]').forEach((el) => {
+      const s = el.style;
+      if (s.opacity !== '' && parseFloat(s.opacity) < 1) s.opacity = '1';
+      if (s.transform && s.transform !== 'none') s.transform = 'none';
+      if (s.visibility === 'hidden') s.visibility = 'visible';
+      if (s.height === '0px') s.removeProperty('height');
+    });
+    // The WebGL hero paints to a canvas that cannot serialise; drop its buffer
+    // attributes so the static file stays small and valid.
+    document.querySelectorAll('#root canvas').forEach((c) => {
+      c.removeAttribute('width');
+      c.removeAttribute('height');
+    });
+    return document.getElementById('root').innerHTML;
+  });
+}
+
+// --- Run --------------------------------------------------------------------
 async function run() {
   const templatePath = join(DIST, 'index.html');
   const template = await readFile(templatePath, 'utf8');
 
-  let count = 0;
+  // PASS 1 — per-route <head>.
+  const heads = new Map();
   for (const route of routes) {
     const html = applyHead(template, route);
-    // '/' -> dist/index.html ; '/foo' -> dist/foo/index.html
-    const outPath =
-      route.path === '/'
-        ? join(DIST, 'index.html')
-        : join(DIST, ...route.path.split('/').filter(Boolean), 'index.html');
+    heads.set(route.path, html);
+    const outPath = outPathFor(route.path);
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, html, 'utf8');
-    count += 1;
   }
+  console.log(`Prerendered ${routes.length} routes with unique <head> metadata.`);
 
-  console.log(`Prerendered ${count} routes with unique <head> metadata.`);
+  // PASS 2 — body snapshot. Fail-soft: a missing browser must not break the build.
+  let server;
+  let browser;
+  try {
+    const { default: puppeteer } = await import('puppeteer');
+    server = await serveDist();
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+    const page = await browser.newPage();
+    // A tall viewport puts more of each page in view at once, so fewer
+    // scroll-triggered animations are still running when we snapshot.
+    await page.setViewport({ width: 1440, height: 2200, deviceScaleFactor: 1 });
+
+    let done = 0;
+    let skipped = 0;
+    for (const route of routes) {
+      const body = await snapshotRoute(page, route.path);
+      if (!body || body.length < 500) {
+        skipped += 1;
+        console.warn(`  ! ${route.path} produced ${body ? body.length : 0} bytes — left as shell`);
+        continue;
+      }
+      const html = heads.get(route.path).replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+      await writeFile(outPathFor(route.path), html, 'utf8');
+      done += 1;
+    }
+    console.log(`Prerendered ${done}/${routes.length} route bodies to static HTML${skipped ? ` (${skipped} skipped)` : ''}.`);
+  } catch (err) {
+    console.warn('\n! Body prerendering skipped — could not run headless Chrome.');
+    console.warn(`  ${err.message}`);
+    console.warn('  Routes still carry full <head> metadata; body remains client-rendered.\n');
+  } finally {
+    if (browser) await browser.close().catch(() => {});
+    if (server) server.close();
+  }
 }
 
 run().catch((err) => {

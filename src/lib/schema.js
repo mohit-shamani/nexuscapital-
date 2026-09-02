@@ -123,3 +123,78 @@ export function articleGraph(post) {
   if (faq) graph.push(faq);
   return { '@context': 'https://schema.org', '@graph': graph };
 }
+
+// ---------------------------------------------------------------------------
+// Non-article routes. Articles get `articleGraph` above; every other page gets
+// `pageGraph` below, so the whole site carries structured data rather than just
+// the Insights posts. Same rule as the article graph: one <script> per page,
+// nodes cross-referenced by @id, and nothing asserted that is not visible on
+// the site. No address, founding date, headcount or registration number is
+// emitted, because none is published anywhere on the site.
+
+const WEBSITE_ID = `${BASE_URL}/#website`;
+
+/** The site itself — gives search engines an explicit site name. */
+export function websiteNode() {
+  return {
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    name: SITE,
+    url: `${BASE_URL}/`,
+    description: DEFAULT_DESCRIPTION,
+    publisher: { '@id': ORG_ID },
+    inLanguage: 'en',
+  };
+}
+
+/** Home → <page> trail for an interior route. */
+export function pageBreadcrumbNode(path, label) {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${BASE_URL}${path}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: label, item: `${BASE_URL}${path}` },
+    ],
+  };
+}
+
+/**
+ * One Service node per offering listed on a page, provided by the Organization.
+ * `items` are the page's own `{ title, summary }` entries — the same copy the
+ * visitor reads — so the markup never claims a service the page does not show.
+ */
+export function serviceNodes(path, items = []) {
+  return items
+    .filter((item) => item && item.title)
+    .map((item) => ({
+      '@type': 'Service',
+      '@id': `${BASE_URL}${path}#service-${slugifyId(item.title)}`,
+      name: item.title,
+      serviceType: item.title,
+      description: item.summary,
+      provider: { '@id': ORG_ID },
+      isPartOf: { '@id': WEBSITE_ID },
+    }));
+}
+
+function slugifyId(text) {
+  return String(text)
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Full graph for a non-article route.
+ *  - Home: Organization + WebSite (no breadcrumb — it is the root).
+ *  - Interior: Organization + WebSite + BreadcrumbList, plus Service nodes
+ *    where the page lists services.
+ */
+export function pageGraph({ path, label, services = [] }) {
+  const graph = [organizationNode(), websiteNode()];
+  if (path !== '/') graph.push(pageBreadcrumbNode(path, label));
+  graph.push(...serviceNodes(path, services));
+  return { '@context': 'https://schema.org', '@graph': graph };
+}
