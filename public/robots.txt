@@ -30,4 +30,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://nexuscapital.in/sitemap.xml
+Sitemap: https://www.nexuscapital.in/sitemap.xml
