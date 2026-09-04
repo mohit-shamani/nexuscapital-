@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import Container from '../ui/Container.jsx';
 import RevealText from '../ui/RevealText.jsx';
 import { fadeUp, EASE_EXPO } from '../../lib/motion.js';
@@ -116,9 +116,9 @@ export default function Faq() {
 
   return (
     <section className="bg-ivory py-28 md:py-40">
-      <Helmet>
+      <Head>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      </Helmet>
+      </Head>
 
       <Container>
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12">

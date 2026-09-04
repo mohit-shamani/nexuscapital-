@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import { articleGraph } from '../../lib/schema.js';
 
 /**
@@ -21,8 +21,8 @@ export default function ArticleJsonLd({ post }) {
   const graph = articleGraph(post);
 
   return (
-    <Helmet>
+    <Head>
       <script type="application/ld+json">{JSON.stringify(graph)}</script>
-    </Helmet>
+    </Head>
   );
 }

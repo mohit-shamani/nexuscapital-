@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import { SITE, BASE_URL, DEFAULT_DESCRIPTION, OG_IMAGE } from '../../lib/site.js';
 
 /**
@@ -33,7 +33,7 @@ export default function Seo({
   const ogImage = shareImage.startsWith('http') ? shareImage : `${BASE_URL}${shareImage}`;
 
   return (
-    <Helmet>
+    <Head>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex, follow" />}
@@ -63,6 +63,6 @@ export default function Seo({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
-    </Helmet>
+    </Head>
   );
 }

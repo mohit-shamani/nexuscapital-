@@ -6,7 +6,7 @@
   "description": "Nexus Capital — Institutional Asset Management",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "vite-react-ssg build",
     "preview": "vite preview",
     "lint": "eslint ."
   },
@@ -20,7 +20,8 @@
     "react-dom": "^18.3.1",
     "react-helmet-async": "^3.0.0",
     "react-router-dom": "^6.28.0",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "vite-react-ssg": "^0.8.9"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

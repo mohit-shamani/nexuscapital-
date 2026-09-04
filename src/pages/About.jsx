@@ -4,6 +4,7 @@ import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
 import CTA from '../components/sections/CTA.jsx';
+import Seo from '../components/utils/Seo.jsx';
 import { fadeUp } from '../lib/motion.js';
 
 const timeline = [
@@ -30,6 +31,11 @@ const values = [
 export default function About() {
   return (
     <PageWrapper>
+      <Seo
+        title="About Us — Disciplined Digital Wealth Management"
+        path="/firm"
+        description="NexusCapital is an independent, partner-owned asset manager bringing decades of institutional discipline, bank-grade security and full transparency to digital asset management."
+      />
       <PageHero
         eyebrow="The Firm"
         title="Thirty-eight years of disciplined stewardship."
