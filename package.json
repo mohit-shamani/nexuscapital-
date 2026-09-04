@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite-react-ssg build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prerender": "node scripts/prerender.mjs",
+    "og:image": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

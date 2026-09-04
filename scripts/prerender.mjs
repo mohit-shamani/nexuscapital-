@@ -292,11 +292,28 @@ async function run() {
       await writeFile(outPathFor(route.path), html, 'utf8');
       done += 1;
     }
-    console.log(`Prerendered ${done}/${routes.length} route bodies to static HTML${skipped ? ` (${skipped} skipped)` : ''}.`);
+    console.log(`Prerendered ${done}/${routes.length} route bodies to static HTML.`);
+    if (skipped > 0) throw new Error(`${skipped} route(s) produced no body`);
   } catch (err) {
-    console.warn('\n! Body prerendering skipped — could not run headless Chrome.');
-    console.warn(`  ${err.message}`);
-    console.warn('  Routes still carry full <head> metadata; body remains client-rendered.\n');
+    // Loud by design. An earlier version swallowed this and shipped head-only
+    // HTML, which looked like a successful deploy while every route still
+    // served an empty <div id="root"></div>. A build that cannot produce the
+    // static content it exists to produce must fail, not degrade quietly.
+    // Set PRERENDER_OPTIONAL=1 to downgrade this to a warning deliberately.
+    console.error('\n=========================================================');
+    console.error('  PRERENDER FAILED — route bodies were NOT written.');
+    console.error(`  ${err.message}`);
+    console.error('');
+    console.error('  Every route would ship an empty <div id="root"></div>.');
+    console.error('  Chromium is expected in node_modules/.cache/puppeteer');
+    console.error('  (see .puppeteerrc.cjs). Fix with:');
+    console.error('    npx puppeteer browsers install chrome');
+    console.error('=========================================================\n');
+    if (!process.env.PRERENDER_OPTIONAL) {
+      if (browser) await browser.close().catch(() => {});
+      if (server) server.close();
+      process.exit(1);
+    }
   } finally {
     if (browser) await browser.close().catch(() => {});
     if (server) server.close();
