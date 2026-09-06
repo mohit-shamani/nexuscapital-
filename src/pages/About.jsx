@@ -2,154 +2,58 @@ import { motion } from 'framer-motion';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
 import PageHero from '../components/sections/PageHero.jsx';
 import Container from '../components/ui/Container.jsx';
-import SectionHeading from '../components/ui/SectionHeading.jsx';
 import CTA from '../components/sections/CTA.jsx';
 import Seo from '../components/utils/Seo.jsx';
 import { fadeUp } from '../lib/motion.js';
-
-const timeline = [
-  { year: '1987', text: 'Founded in London with a single, concentrated equities mandate and a contrarian, long-horizon mandate.' },
-  { year: '1998', text: 'Established our fixed income franchise, built around fundamental credit research.' },
-  { year: '2009', text: 'Launched private markets, deploying permanent capital through the cycle.' },
-  { year: '2016', text: 'Opened offices across Asia-Pacific and the Middle East to serve sovereign institutions.' },
-  { year: '2026', text: 'Stewarding over half a trillion dollars for more than 320 institutions worldwide.' },
-];
-
-const leadership = [
-  { name: 'Eleanor Vance', role: 'Chief Investment Officer', tenure: '21 years at Nexus' },
-  { name: 'Marcus Thorne', role: 'Head of Credit', tenure: '17 years at Nexus' },
-  { name: 'Priya Anand', role: 'Head of Multi-Asset', tenure: '14 years at Nexus' },
-  { name: 'James Okonkwo', role: 'Head of Private Markets', tenure: '12 years at Nexus' },
-];
-
-const values = [
-  { title: 'Fiduciary first', body: 'A legal and moral duty that precedes every decision. Our clients’ interests are not a consideration — they are the consideration.' },
-  { title: 'Intellectual honesty', body: 'We seek to be right, not to appear right. Dissent is welcomed; conviction is earned through scrutiny.' },
-  { title: 'Quiet conviction', body: 'We let outcomes speak. No noise, no theatre — only disciplined, repeatable process.' },
-];
 
 export default function About() {
   return (
     <PageWrapper>
       <Seo
-        title="About Us — Disciplined Digital Wealth Management"
+        title="About Nexus Capital"
         path="/firm"
-        description="NexusCapital is an independent, partner-owned asset manager bringing decades of institutional discipline, bank-grade security and full transparency to digital asset management."
+        description="Nexus Capital offers digital asset management: portfolio construction, custody coordination and risk management for investors allocating to digital assets."
       />
       <PageHero
-        eyebrow="The Firm"
-        title="Thirty-eight years of disciplined stewardship."
-        intro="Nexus Capital was founded on a simple premise: that the patient, rigorous ownership of quality assets is the surest path to enduring institutional outcomes. That premise has not changed."
+        eyebrow="About"
+        title="About Nexus Capital"
+        intro="What we do, in plain terms."
       />
 
-      {/* Narrative */}
       <section className="bg-ivory py-28 md:py-36">
-        <Container className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <SectionHeading eyebrow="Who we are" title="An independent partnership." />
-          </div>
+        <Container>
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-6 text-lg leading-relaxed text-slatey lg:col-span-6 lg:col-start-7"
+            className="max-w-2xl space-y-6 text-lg leading-relaxed text-slatey"
           >
             <p>
-              We are independent and partner-owned — a structure we have deliberately
-              preserved. It frees us from the short-term pressures of public ownership and
-              aligns our partners with the institutions we serve.
+              Nexus Capital offers digital asset management. Digital asset management
+              means deciding which digital assets a portfolio holds, in what proportion,
+              how those assets are safeguarded, and when the position is adjusted — the
+              same set of decisions that applies to any other asset class.
             </p>
             <p>
-              Our scale is meaningful but our culture remains intimate. We invest as a single
-              team, with a shared research language and a common standard of rigour applied
-              to every asset class we touch.
+              Our approach to custody is that assets should be held so that no single
+              person, device or location can move them. That means distributed
+              key-management — multi-signature or multi-party computation — with
+              segregation of duties and independent reconciliation around it.
             </p>
             <p>
-              We grow deliberately and accept a limited number of new relationships each year —
-              because stewardship of this kind cannot be industrialised.
+              Our approach to risk is that position size is decided by the risk a
+              position contributes, not the capital committed. Digital assets are
+              volatile, and a portfolio should be built to survive a drawdown rather
+              than to avoid one.
+            </p>
+            <p className="text-base">
+              Nexus Capital is not a licensed or registered investment adviser. Nothing
+              on this site is investment advice or an offer to provide investment
+              services. Digital assets carry a high risk of loss, including total loss
+              of capital.
             </p>
           </motion.div>
-        </Container>
-      </section>
-
-      {/* Values */}
-      <section className="bg-ivory-50 py-28 md:py-36">
-        <Container>
-          <SectionHeading eyebrow="What we value" title="The principles beneath the process." className="mb-16" />
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-ink/10 bg-ink/10 md:grid-cols-3">
-            {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-ivory-50 p-10"
-              >
-                <span className="font-serif text-sm text-brass">0{i + 1}</span>
-                <h3 className="mt-5 font-serif text-2xl font-light text-ink">{v.title}</h3>
-                <p className="mt-4 leading-relaxed text-slatey">{v.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Timeline */}
-      <section className="bg-ink py-28 text-ivory md:py-36">
-        <Container>
-          <SectionHeading eyebrow="Our history" title="A long line, drawn patiently." light className="mb-16" />
-          <div className="border-t border-ivory/15">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={item.year}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="grid grid-cols-12 gap-4 border-b border-ivory/15 py-8"
-              >
-                <span className="col-span-3 font-serif text-2xl font-light text-brass-light md:col-span-2">
-                  {item.year}
-                </span>
-                <p className="col-span-9 max-w-2xl leading-relaxed text-ivory/70 md:col-span-10">
-                  {item.text}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Leadership */}
-      <section className="bg-ivory py-28 md:py-36">
-        <Container>
-          <SectionHeading eyebrow="Leadership" title="Stewards, not stars." className="mb-16" />
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {leadership.map((person, i) => (
-              <motion.div
-                key={person.name}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-              >
-                {/* Portrait placeholder — a refined tonal panel */}
-                <div className="mb-6 aspect-[4/5] w-full overflow-hidden bg-gradient-to-b from-ink-600 to-ink">
-                  <div className="flex h-full items-center justify-center font-serif text-5xl font-light text-ivory/15">
-                    {person.name.split(' ').map((n) => n[0]).join('')}
-                  </div>
-                </div>
-                <h3 className="font-serif text-xl font-normal text-ink">{person.name}</h3>
-                <p className="mt-1 text-sm text-brass">{person.role}</p>
-                <p className="mt-1 text-sm text-slatey">{person.tenure}</p>
-              </motion.div>
-            ))}
-          </div>
         </Container>
       </section>
 

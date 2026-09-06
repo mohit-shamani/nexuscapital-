@@ -67,8 +67,8 @@ function escapeHtml(str) {
 const staticRoutes = [
   { path: '/', label: 'Home', title: null, description:
       'NexusCapital delivers institutional-grade crypto asset management for high-net-worth investors. Secure portfolio management, digital asset trading & wealth consulting. Book your portfolio review today.' },
-  { path: '/firm', label: 'About', title: 'About Us — Disciplined Digital Wealth Management', description:
-      'NexusCapital is an independent, partner-owned asset manager bringing decades of institutional discipline, bank-grade security and full transparency to digital asset management.' },
+  { path: '/firm', label: 'About', title: 'About Nexus Capital', description:
+      'Nexus Capital offers digital asset management: portfolio construction, custody coordination and risk management for investors allocating to digital assets.' },
   { path: '/strategies', label: 'Strategies', title: 'Strategies — Crypto Portfolio Management & Risk', description:
       'Actively managed crypto portfolios, wealth preservation, alternative investments and risk-first management — institutional digital asset strategies built around your mandate.',
     services: strategies },
