@@ -49,9 +49,15 @@ export function breadcrumbNode(post) {
 /** The article itself (BlogPosting), enriched for EEAT and AEO. */
 export function articleNode(post) {
   const url = articleUrl(post);
+  // Authorship is the organisation itself. The site names no individuals, so
+  // no Person node may be emitted here — doing so would assert a named author
+  // who does not exist. If a real, named author is ever added, emit a Person
+  // only for someone actually identified on the site.
   const author = parseAuthor(post.author);
-  const authorNode = { '@type': 'Person', name: author.name };
-  if (author.jobTitle) authorNode.jobTitle = author.jobTitle;
+  const authorNode =
+    author.name === SITE || author.name === 'Nexus Capital'
+      ? { '@id': ORG_ID }
+      : { '@type': 'Person', name: author.name, ...(author.jobTitle ? { jobTitle: author.jobTitle } : {}) };
 
   const node = {
     '@type': 'BlogPosting',

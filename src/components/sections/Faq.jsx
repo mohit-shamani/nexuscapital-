@@ -8,29 +8,30 @@ import { fadeUp, EASE_EXPO } from '../../lib/motion.js';
 /**
  * Frequently asked questions, rendered as an accordion and mirrored into
  * FAQPage JSON-LD so the answers are eligible for rich results in Google and
- * AI search. Drafted to avoid hard claims (minimums, custody partners, fees) —
- * verify and refine the flagged answers before relying on them publicly.
+ * AI search. Answers describe intended approach only:
+ * nothing here may assert an existing client, mandate, custody arrangement,
+ * track record or operating history.
  */
 const faqs = [
   {
     q: 'What does NexusCapital do?',
-    a: 'We provide institutional-grade digital asset management for high-net-worth individuals, family offices and institutions — spanning portfolio strategy, secure custody coordination, long-term allocation and ongoing wealth consulting. Every mandate is built around your objectives, time horizon and risk tolerance.',
+    a: 'We provide digital asset management — portfolio strategy, custody coordination, long-term allocation and ongoing wealth consulting. In practice that means deciding which digital assets a portfolio holds, in what proportion, how those assets are safeguarded and when the position is adjusted, built around your objectives, time horizon and risk tolerance.',
   },
   {
-    q: 'Who do you work with?',
-    a: 'Our clients are typically high-net-worth individuals, family offices and institutional allocators seeking considered exposure to digital assets. We work best with investors who think in market cycles rather than headlines, and who value research, discipline and security over speculation.',
+    q: 'Who is this service for?',
+    a: 'It is built for high-net-worth individuals, family offices and institutional allocators considering measured exposure to digital assets — investors who think in market cycles rather than headlines, and who value research, discipline and security over speculation.',
   },
   {
-    q: 'How are client assets secured?',
-    a: 'Assets are held using institutional-grade custody with segregation, multi-layer access controls and rigorous operational procedures. Safeguarding capital is the foundation of how we operate — security is engineered into every layer rather than added as an afterthought.',
+    q: 'How would client assets be secured?',
+    a: 'Our approach is that no single person, device or location should be able to move assets. That means distributed key-management — multi-signature or multi-party computation — with segregation of duties, withdrawal allow-lists and independent reconciliation around it. Specific custody arrangements are agreed with each client before any capital is committed.',
   },
   {
     q: 'Is there a minimum to get started?',
-    a: 'Mandates are tailored to each client, and we work across a range of portfolio sizes appropriate to institutional and high-net-worth allocation. The most reliable way to understand fit is a confidential portfolio review, where we discuss your objectives and outline how we would approach your allocation.',
+    a: 'We do not publish a minimum. The most reliable way to understand fit is a confidential portfolio review, where we discuss your objectives and outline how we would approach your allocation.',
   },
   {
     q: 'How do you approach risk and volatility?',
-    a: 'We treat volatility as a characteristic of the asset class, not a reason to abandon a thesis. Allocations are sized deliberately, diversified across our research convictions and measured over full market cycles. The discipline to stay invested through turbulence, with a clear plan, is our most durable advantage.',
+    a: 'We treat volatility as a characteristic of the asset class, not a reason to abandon a thesis. Position size is decided by the risk a position contributes rather than the capital committed, and a portfolio should be built to survive a drawdown rather than to avoid one.',
   },
   {
     q: 'How do I begin?',

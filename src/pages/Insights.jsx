@@ -31,12 +31,12 @@ export default function Insights() {
       <Seo
         title="Insights & Research — Digital Asset Market Analysis"
         path="/insights"
-        description="Institutional research and market outlook on crypto asset allocation, custody, on-chain yield, risk management and regulation from the NexusCapital investment team."
+        description="Institutional research and market outlook on crypto asset allocation, custody, on-chain yield, risk management and regulation from NexusCapital."
       />
       <PageHero
         eyebrow="Insights"
         title="Perspectives for the long horizon."
-        intro="Our investment thinking, made transparent — measured analysis of the forces shaping markets, capital and the institutions we serve."
+        intro="Our investment thinking, made transparent — measured analysis of the forces shaping digital asset markets."
       />
 
       <section className="bg-ivory py-20 md:py-28">

@@ -21,8 +21,8 @@ export default function CTA() {
           viewport={{ once: true }}
           className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-slatey text-balance"
         >
-          Our institutional team partners with a select number of clients. We would welcome
-          a confidential, no-obligation conversation.
+          If you are considering an allocation to digital assets, we would welcome a
+          confidential, no-obligation conversation.
         </motion.p>
         <motion.div
           variants={fadeUp}

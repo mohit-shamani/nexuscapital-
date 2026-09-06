@@ -1,11 +1,6 @@
-// Headline trust figures. Values are illustrative for this concept site.
-export const stats = [
-  { value: 500, prefix: '₹', suffix: 'Cr+', label: 'Assets Under Management' },
-  { value: 250, prefix: '', suffix: '+', label: 'Institutional Clients' },
-  { value: 10, prefix: '', suffix: '+', label: 'Years in Digital Assets' },
-  { value: 95, prefix: '', suffix: '%', label: 'Client Retention' },
-];
-
+// The audience this service is built for. These are descriptions of intended
+// investor types, not a client roster — nothing here asserts an existing
+// relationship, and nothing may be added that does.
 export const clientTypes = [
   'Family Offices',
   'Private Wealth',

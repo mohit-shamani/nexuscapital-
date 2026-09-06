@@ -73,12 +73,12 @@ const staticRoutes = [
       'Actively managed crypto portfolios, wealth preservation, alternative investments and risk-first management — institutional digital asset strategies built around your mandate.',
     services: strategies },
   { path: '/insights', label: 'Insights', title: 'Insights & Research — Digital Asset Market Analysis', description:
-      'Institutional research and market outlook on crypto asset allocation, custody, on-chain yield, risk management and regulation from the NexusCapital investment team.' },
+      'Institutional research and market outlook on crypto asset allocation, custody, on-chain yield, risk management and regulation from NexusCapital.' },
   { path: '/expertise', label: 'Our Expertise', title: 'Our Expertise — Digital Asset Custody & Research', description:
       'From portfolio construction to bank-grade custody, NexusCapital applies institutional rigor to every stage of the digital-asset lifecycle — research, trading, security and governance.',
     services: expertiseAreas },
   { path: '/contact', label: 'Contact', title: 'Contact — Book a Portfolio Review', description:
-      'Begin a confidential conversation with NexusCapital. Contact our institutional team to discuss your mandate and book a portfolio review. Email info@nexuscapital.in.' },
+      'Begin a confidential conversation with NexusCapital. Get in touch to discuss a digital asset allocation and book a portfolio review. Email info@nexuscapital.in.' },
 ];
 
 // Legal stubs mirror <Seo title={page.title} description={page.intro} />.

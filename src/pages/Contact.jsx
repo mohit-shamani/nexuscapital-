@@ -51,12 +51,12 @@ export default function Contact() {
       <Seo
         title="Contact — Book a Portfolio Review"
         path="/contact"
-        description="Begin a confidential conversation with NexusCapital. Contact our institutional team to discuss your mandate and book a portfolio review. Email info@nexuscapital.in."
+        description="Begin a confidential conversation with NexusCapital. Get in touch to discuss a digital asset allocation and book a portfolio review. Email info@nexuscapital.in."
       />
       <PageHero
         eyebrow="Contact"
         title="Begin a confidential conversation."
-        intro="We partner with a select number of institutions. Tell us a little about your mandate and our institutional team will respond personally."
+        intro="Tell us a little about what you are looking to achieve and we will respond personally."
       />
 
       <section className="bg-ivory py-24 md:py-32">
@@ -143,8 +143,8 @@ export default function Contact() {
                 info@nexuscapital.in
               </a>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-slatey">
-                Every enquiry is reviewed personally by our institutional team. We aim to
-                respond within two business days.
+                Every enquiry is read personally. We aim to respond within two business
+                days.
               </p>
             </motion.div>
 

@@ -23,7 +23,7 @@ export default function Strategies() {
 
       <section className="bg-ivory py-24 md:py-32">
         <Container className="space-y-px">
-          {strategies.map((s, i) => (
+          {strategies.map((s) => (
             <motion.article
               key={s.id}
               variants={fadeUp}
@@ -45,16 +45,6 @@ export default function Strategies() {
 
               <div className="lg:col-span-6">
                 <p className="leading-relaxed text-slatey">{s.detail}</p>
-                <div className="mt-10 grid grid-cols-3 gap-6 border-t border-ink/10 pt-8">
-                  {s.metrics.map((m) => (
-                    <div key={m.label}>
-                      <div className="font-serif text-3xl font-light text-ink">{m.value}</div>
-                      <div className="mt-2 text-xs uppercase tracking-wide text-slatey">
-                        {m.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </motion.article>
           ))}
@@ -67,7 +57,7 @@ export default function Strategies() {
           <p className="eyebrow mb-12 text-center">A single, repeatable process</p>
           <div className="grid grid-cols-1 gap-px overflow-hidden border border-ink/10 bg-ink/10 md:grid-cols-4">
             {[
-              { n: '01', t: 'Originate', d: 'Independent, fundamental research across our global team.' },
+              { n: '01', t: 'Originate', d: 'Independent, fundamental research into every candidate asset.' },
               { n: '02', t: 'Underwrite', d: 'Rigorous downside analysis before any capital is committed.' },
               { n: '03', t: 'Own', d: 'Patient, low-turnover stewardship measured in years.' },
               { n: '04', t: 'Engage', d: 'Active ownership and governance to protect long-term value.' },

@@ -28,7 +28,7 @@ export const insights = [
     date: '2026-07-13',
     updated: '2026-07-27',
     readingTime: '18 min',
-    author: 'The Investment Committee',
+    author: 'Nexus Capital',
     content: [
       {
         p: [
@@ -333,7 +333,7 @@ export const insights = [
     },
     date: '2026-08-05',
     readingTime: '16 min',
-    author: 'Julian Reyes, Head of Risk',
+    author: 'Nexus Capital',
     content: [
       {
         p: [
@@ -634,7 +634,7 @@ export const insights = [
     },
     date: '2026-08-05',
     readingTime: '15 min',
-    author: 'Eleanor Vance, CIO',
+    author: 'Nexus Capital',
     content: [
       'Family offices occupy an unusual position in the digital asset conversation. They have the discretion of private capital and the obligations of an institution, a horizon measured in generations rather than quarters, and a decision-making structure in which the principal, the next generation and the professional staff may hold materially different views about the same allocation.',
       'That combination produces a distinctive pattern of behaviour. Family offices were among the earliest institutional participants in digital assets and remain among the most cautious in how they hold them. This note sets out how the more considered offices are approaching the asset class — how they structure an allocation, govern it, custody it, and, in several cases, decline it — and the questions that separate a deliberate position from an accidental one.',
@@ -858,7 +858,7 @@ export const insights = [
     },
     date: '2026-08-05',
     readingTime: '16 min',
-    author: 'Priya Anand, Portfolio Manager',
+    author: 'Nexus Capital',
     content: [
       'Due diligence in digital assets suffers from an unusual problem: there is more data available than in almost any other asset class, and less of it is decision-useful. Every transaction is public, every balance verifiable, every protocol parameter inspectable. Yet the questions that determine whether an institution should commit capital — who controls the asset, what happens if the code fails, whether the counterparty holding it is solvent — are frequently answered nowhere in that data.',
       'This note sets out how institutional investors structure the investigation. It is written for allocators who already run diligence processes in traditional markets and want to understand which frameworks transfer directly, which require adaptation, and which questions have no equivalent in a prospectus or an audited financial statement.',
@@ -1099,7 +1099,7 @@ export const insights = [
     },
     date: '2026-08-05',
     readingTime: '16 min',
-    author: 'Eleanor Vance, CIO',
+    author: 'Nexus Capital',
     content: [
       'Most institutional discussion of digital assets concerns whether the asset class deserves a place in a portfolio. The more demanding question, and the one that determines outcomes, is what happens to the rest of the portfolio when it is added. An allocation does not arrive in a vacuum: it displaces something, changes the aggregate risk profile, and introduces operational requirements the existing portfolio was not built to carry.',
       'This note treats digital assets as a strategic asset allocation problem rather than an investment idea. It sets out how to define the role of the allocation, size it, fund it, implement it and govern it — and where the analytical case for it is weakest, which is the part most often omitted.',
@@ -1309,7 +1309,7 @@ export const insights = [
     },
     date: '2026-05-18',
     readingTime: '8 min',
-    author: 'Eleanor Vance, CIO',
+    author: 'Nexus Capital',
     content: [
       {
         p: [
@@ -1323,8 +1323,8 @@ export const insights = [
       },
       'We approach digital assets not as a bet on price, but as an allocation decision. The discipline that governs an allocation to private credit or emerging-market equity applies here without modification: define the role of the asset in the portfolio, size the position to its risk, and hold it through a defined horizon.',
       { h: 'An allocation, not a trade' },
-      'The single most common error we observe is treating digital assets as a tactical trade rather than a strategic allocation. Trading invites the portfolio to react to volatility; allocation requires it to withstand volatility. A position sized correctly — typically a low-single-digit percentage of total assets for a first allocation — can absorb the drawdowns characteristic of the asset class without threatening the broader portfolio.',
-      'Risk budgeting is the mechanism that makes this possible. Rather than asking how much capital to commit, we ask how much risk the allocation should contribute, and we size from there. Because digital assets carry high standalone volatility, even a modest capital weight delivers a meaningful risk contribution.',
+      'The most common error in this asset class is treating digital assets as a tactical trade rather than a strategic allocation. Trading invites the portfolio to react to volatility; allocation requires it to withstand volatility. A position sized correctly — typically a low-single-digit percentage of total assets for a first allocation — can absorb the drawdowns characteristic of the asset class without threatening the broader portfolio.',
+      'Risk budgeting is the mechanism that makes this possible. Rather than asking how much capital to commit, the question is how much risk the allocation should contribute, and the position is sized from there. Because digital assets carry high standalone volatility, even a modest capital weight delivers a meaningful risk contribution.',
       { h: 'What measured looks like' },
       'A measured allocation is diversified across assets and access vehicles, custodied through institutional infrastructure, and rebalanced on a rule rather than a reaction. It is reported transparently and reviewed on the same cadence as the rest of the portfolio. None of this is novel. It is simply the application of established institutional practice to a newer asset class.',
       'The institutions that will look back on this period favourably are not those who timed an entry, but those who built a durable, repeatable process for owning the asset class through a full cycle.',
@@ -1357,7 +1357,7 @@ export const insights = [
     faqs: [
       {
         q: 'How much should an institution allocate to digital assets?',
-        a: 'There is no universal figure. We size allocations by risk contribution rather than headline capital, and a first allocation is typically a low-single-digit percentage of total assets — enough to be meaningful, small enough to absorb the drawdowns characteristic of the asset class without threatening the broader portfolio.',
+        a: 'There is no universal figure. Our approach is to size an allocation by risk contribution rather than headline capital, and a first allocation is typically a low-single-digit percentage of total assets — enough to be meaningful, small enough to absorb the drawdowns characteristic of the asset class without threatening the broader portfolio.',
       },
       {
         q: 'Is a digital asset allocation a trade or a long-term position?',
@@ -1371,7 +1371,7 @@ export const insights = [
   },
   {
     id: 'custody-foundation-of-trust',
-    related: ['mpc-multisig-custody', 'stewardship-report'],
+    related: ['mpc-multisig-custody', 'institutional-crypto-risk-management'],
     category: 'Custody & Security',
     title: 'Custody Is the Foundation of Trust',
     excerpt:
@@ -1382,7 +1382,7 @@ export const insights = [
     },
     date: '2026-04-02',
     readingTime: '6 min',
-    author: 'Marcus Thorne, Head of Security',
+    author: 'Nexus Capital',
     content: [
       'In traditional markets, custody is largely invisible. Assets sit with a regulated custodian, settlement is intermediated, and ownership is rarely in doubt. Digital assets remove those intermediaries by design, which means the question of how an asset is held moves from the background to the centre of the risk conversation.',
       {
@@ -1399,13 +1399,11 @@ export const insights = [
       'Sound institutional custody begins with a simple principle: no single person, device, or location should be able to move client assets. Modern key-management — whether multi-signature or multi-party computation — distributes signing authority so that a transaction requires a quorum of independent approvals. A compromised laptop or a coerced employee is no longer sufficient to cause loss.',
       'Around that cryptographic core sits the operational governance that makes it institutional: segregation of duties, withdrawal allow-lists, time-locks on large transfers, and independent reconciliation. Technology removes the single point of failure; process ensures it stays removed.',
       { h: 'Visible by default' },
-      'Custody should also be transparent to the client. Holdings, addresses and movements are visible to the institutions we serve at all times. Trust is not asked for; it is evidenced. That is the standard we hold ourselves to, because in this asset class custody is not a back-office function — it is the foundation on which everything else rests.',
+      'Custody should also be transparent to the client. Holdings, addresses and movements should be reportable to the client at any time. Trust should not be asked for; it should be evidenced. That is the standard we hold ourselves to, because in this asset class custody is not a back-office function — it is the foundation on which everything else rests.',
       {
         p: [
           'We explore the mechanics of distributed key-management in more depth in our note on ',
           { to: '/insights/mpc-multisig-custody', text: 'MPC and multi-signature custody' },
-          ', account for how it is applied in the annual ',
-          { to: '/insights/stewardship-report', text: 'stewardship letter' },
           ', and set custody in its wider context — alongside allocation, execution and risk — in our guide to ',
           {
             to: '/insights/institutional-crypto-asset-management',
@@ -1435,7 +1433,7 @@ export const insights = [
       },
       {
         q: 'Can clients see their own holdings?',
-        a: 'Yes. Holdings, addresses and movements are visible to the institutions we serve at all times. We regard transparency as part of custody itself — trust should be evidenced, not asked for.',
+        a: 'They should be. Holdings, addresses and movements should be reportable to the client at any time. We regard transparency as part of custody itself — trust should be evidenced, not asked for.',
       },
     ],
   },
@@ -1452,7 +1450,7 @@ export const insights = [
     },
     date: '2026-02-21',
     readingTime: '7 min',
-    author: 'Priya Anand, Portfolio Manager',
+    author: 'Nexus Capital',
     content: [
       'On-chain yield is among the most misunderstood features of digital asset markets. A headline rate tells you almost nothing on its own; what matters is where the yield comes from, who is paying it, and what has to remain true for it to persist.',
       'We underwrite on-chain yield the way we would underwrite any income stream: by tracing it back to a source and stress-testing the assumptions that sustain it.',
@@ -1481,7 +1479,7 @@ export const insights = [
       },
       {
         p: [
-          'To see how yield underwriting informs our portfolios, explore our ',
+          'To see how yield underwriting fits the wider approach, explore our ',
           { to: '/expertise', text: 'research and investment expertise' },
           ' or ',
           { to: '/contact', text: 'book a portfolio review' },
@@ -1500,65 +1498,7 @@ export const insights = [
       },
       {
         q: 'What risks come with on-chain yield?',
-        a: 'Even durable yield carries layered risk: smart-contract risk, counterparty risk, liquidity risk, and the risk that the underlying collateral is itself volatile. We require each to be identified and priced before any capital is committed.',
-      },
-    ],
-  },
-  {
-    id: 'stewardship-report',
-    related: ['custody-foundation-of-trust', 'position-sizing-drawdown-control'],
-    category: 'Stewardship',
-    title: 'The 2026 Digital Asset Stewardship Letter',
-    excerpt:
-      'Our annual account of how we manage risk, security and governance on behalf of the capital entrusted to us.',
-    definition: {
-      term: 'the Digital Asset Stewardship Letter',
-      text: 'The Digital Asset Stewardship Letter is NexusCapital’s annual account, in plain terms, of how it has stewarded the capital entrusted to it — the decisions made, the risks accepted and declined, and the principles of discipline, security and governance that guided both. It is a record of fiduciary conduct, not a marketing document.',
-    },
-    date: '2026-01-15',
-    readingTime: '12 min',
-    author: 'The Investment Committee',
-    content: [
-      'Each year we set out, in plain terms, how we have stewarded the capital entrusted to us. This letter is not a marketing document. It is an account — of the decisions we made, the risks we accepted and declined, and the principles that guided both.',
-      { h: 'On discipline' },
-      'The past year rewarded patience and punished reaction. We held our strategic allocations through two sharp drawdowns, rebalancing on rule rather than sentiment. In both cases, the portfolios that did least performed best. We continue to believe that the hardest discipline — doing nothing when doing something feels urgent — is also the most valuable.',
-      { h: 'On security' },
-      'No client asset was lost or impaired. Our custody arrangements were independently reviewed twice during the year, and our key-management quorum was tested under simulated compromise. We treat the absence of incident not as luck but as the product of process, and we decline to relax that process when markets are calm.',
-      { h: 'On governance' },
-      'We voted, engaged, and where necessary declined to participate in protocol decisions that we judged contrary to the long-term interests of token holders. Active ownership is not confined to public equities; it applies wherever we hold a stake and a voice.',
-      { h: 'On what we owe you' },
-      'Our duty is fiduciary before it is anything else. We seek to be right rather than to appear right, and we would rather forgo a return than compromise the standard by which we hold your capital. That is the commitment beneath every figure in the report that follows.',
-      {
-        p: [
-          'The principles beneath this letter are set out at greater length in our notes on ',
-          { to: '/insights/custody-foundation-of-trust', text: 'custody as the foundation of trust' },
-          ' and ',
-          { to: '/insights/position-sizing-drawdown-control', text: 'drawdown control' },
-          '.',
-        ],
-      },
-      {
-        p: [
-          'To learn more about the firm and the philosophy behind this stewardship, visit ',
-          { to: '/firm', text: 'about NexusCapital' },
-          ' or ',
-          { to: '/contact', text: 'book a portfolio review' },
-          '.',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        q: 'What is the Digital Asset Stewardship Letter?',
-        a: 'It is our annual account, in plain terms, of how we have stewarded the capital entrusted to us — the decisions we made, the risks we accepted and declined, and the principles that guided both. It is not a marketing document; it is a record of conduct.',
-      },
-      {
-        q: 'How does NexusCapital approach governance over the assets it holds?',
-        a: 'We practise active ownership. We vote, engage, and where necessary decline to participate in protocol decisions we judge contrary to the long-term interests of token holders. Active ownership is not confined to public equities; it applies wherever we hold a stake and a voice.',
-      },
-      {
-        q: 'What does fiduciary duty mean in practice here?',
-        a: 'It means our duty to clients comes before anything else. We seek to be right rather than to appear right, and we would rather forgo a return than compromise the standard by which we hold client capital.',
+        a: 'Even durable yield carries layered risk: smart-contract risk, counterparty risk, liquidity risk, and the risk that the underlying collateral is itself volatile. Each should be identified and priced before any capital is committed.',
       },
     ],
   },
@@ -1575,7 +1515,7 @@ export const insights = [
     },
     date: '2026-06-10',
     readingTime: '9 min',
-    author: 'Eleanor Vance, CIO',
+    author: 'Nexus Capital',
     content: [
       {
         p: [
@@ -1642,7 +1582,7 @@ export const insights = [
     },
     date: '2026-05-02',
     readingTime: '7 min',
-    author: 'Julian Reyes, Head of Risk',
+    author: 'Nexus Capital',
     content: [
       'The mathematics of loss is unforgiving. A portfolio that falls 50% must rise 100% to recover. A fall of 80% requires a fivefold gain. In an asset class capable of such moves, the first objective of risk management is not to maximise return — it is to ensure the portfolio survives to compound.',
       { h: 'Position limits as a constitution' },
@@ -1708,7 +1648,7 @@ export const insights = [
     },
     date: '2026-04-20',
     readingTime: '10 min',
-    author: 'Sofia Marchetti, Regulatory Counsel',
+    author: 'Nexus Capital',
     content: [
       'For institutions, regulatory clarity is not a constraint on participation — it is a precondition for it. The maturing of digital-asset regulation across major jurisdictions has done more to enable serious capital than any market rally. This note maps the perimeter as it stands, and what it means in practice.',
       { h: 'A framework, not a patchwork' },
@@ -1777,7 +1717,7 @@ export const insights = [
     },
     date: '2026-03-14',
     readingTime: '8 min',
-    author: 'Marcus Thorne, Head of Security',
+    author: 'Nexus Capital',
     content: [
       'Cold storage — keeping private keys entirely offline — was the first serious answer to the custody problem. It solved one risk, exposure to network attackers, while leaving others untouched: the single key, the single operator, the single point at which a process could fail. Institutional custody has since moved beyond it.',
       { h: 'Two models, one principle' },
@@ -1842,7 +1782,7 @@ export const insights = [
     },
     date: '2026-03-01',
     readingTime: '9 min',
-    author: 'Priya Anand, Portfolio Manager',
+    author: 'Nexus Capital',
     content: [
       {
         p: [
@@ -1907,7 +1847,7 @@ export const insights = [
     },
     date: '2026-02-05',
     readingTime: '7 min',
-    author: 'Priya Anand, Portfolio Manager',
+    author: 'Nexus Capital',
     content: [
       'Staking — committing assets to help secure a proof-of-stake network in return for rewards — is often presented as a near risk-free yield. It is neither risk-free nor uniform, and understanding why is essential to treating it as a genuine source of return rather than a headline number.',
       { h: 'Two sources of staking reward' },

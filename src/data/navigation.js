@@ -7,23 +7,24 @@ export const navLinks = [
   { label: 'Our Expertise', path: '/expertise' },
 ];
 
+// Footer groups. Every label must name a page or a capability the site
+// actually describes — no link may imply clients, history or recognition.
 export const footerNav = [
   {
     heading: 'Firm',
     links: [
       { label: 'About Nexus', path: '/firm' },
-      { label: 'Investment Philosophy', path: '/firm' },
       { label: 'Our Expertise', path: '/expertise' },
       { label: 'Contact', path: '/contact' },
     ],
   },
   {
-    heading: 'Services',
+    heading: 'Strategies',
     links: [
-      { label: 'Portfolio Management', path: '/strategies' },
-      { label: 'Wealth Preservation', path: '/strategies' },
-      { label: 'Alternative Investments', path: '/strategies' },
-      { label: 'Strategic Advisory', path: '/strategies' },
+      { label: 'Core Digital Assets', path: '/strategies' },
+      { label: 'Staking & On-Chain Yield', path: '/strategies' },
+      { label: 'Digital Venture', path: '/strategies' },
+      { label: 'Multi-Strategy Solutions', path: '/strategies' },
     ],
   },
   {
@@ -31,8 +32,8 @@ export const footerNav = [
     links: [
       { label: 'Book a Consultation', path: '/contact' },
       { label: 'Insights', path: '/insights' },
-      { label: 'Client Stories', path: '/firm' },
-      { label: 'Trust & Metrics', path: '/firm' },
+      { label: 'Legal & Regulatory', path: '/legal' },
+      { label: 'Privacy', path: '/privacy' },
     ],
   },
 ];

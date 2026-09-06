@@ -17,7 +17,7 @@ export const expertiseAreas = [
     summary:
       'Research-driven execution across digital markets, grounded in independent analysis rather than speculation.',
     detail:
-      'Every decision begins with fundamental research from our global team. Execution is patient and deliberate, designed to enter and exit positions with minimal market impact and full alignment to the underlying thesis.',
+      'Every decision begins with independent fundamental research. Execution is patient and deliberate, designed to enter and exit positions with minimal market impact and full alignment to the underlying thesis.',
   },
   {
     index: '03',
@@ -33,7 +33,7 @@ export const expertiseAreas = [
     summary:
       'Bank-grade safekeeping of digital assets, with multi-layer controls and complete segregation of client holdings.',
     detail:
-      'How assets are held matters as much as any single trade. Holdings are secured through institutional custody, multi-signature controls and rigorous operational governance — visible to clients at all times.',
+      'How assets are held matters as much as any single trade. Our approach is institutional custody, multi-signature or multi-party controls and rigorous operational governance, with holdings reportable to the client at any time.',
   },
   {
     index: '05',
