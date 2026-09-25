@@ -1,7 +1,5 @@
 // Single source of truth for site-wide identity used by SEO metadata, JSON-LD
-// schema and the build-time prerenderer. Keeping these here (framework-free)
-// lets both the React app and scripts/prerender.mjs import the exact same
-// values, so client-rendered and prerendered output can never drift.
+// schema and the React app. Prerendering is done by vite-react-ssg.
 
 export const SITE = 'NexusCapital';
 export const BASE_URL = 'https://www.nexuscapital.in';

@@ -9,7 +9,6 @@
     "build": "vite-react-ssg build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "prerender": "node scripts/prerender.mjs",
     "og:image": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
